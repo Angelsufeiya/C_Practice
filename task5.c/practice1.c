@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<Windows.h>
+#include<string.h>
 
 /*演示多个字符从两端移动，向中间汇聚*/
 
@@ -17,19 +18,29 @@ int main()
 	int right = strlen(arr1) - 1;
 	//strlen求字符数组没有求"\0"
 
-	while (left <= right)
+	//while (left <= right)
+	//{
+	//	arr2[left] = arr1[left];
+	//	arr2[right] = arr1[right];
+	//	printf("%s\n", arr2);
+	//	Sleep(500);
+	//	//此刻的地方是毫秒 1000毫秒 = 1秒
+	//	system("cls");
+	//	//"cls" 用于清空屏幕
+	//	left++;
+	//	right--;
+	//}
+	//printf("%s\n", arr2);
+
+	//for循环实现
+	for (left = 0, right = strlen(arr1) - 1; left <= right; left++, right--)
 	{
 		arr2[left] = arr1[left];
 		arr2[right] = arr1[right];
 		printf("%s\n", arr2);
-		Sleep(1000);
-		//此刻的地方是毫秒 1000毫秒 = 1秒
+		Sleep(500);
 		system("cls");
-		//"cls" 用于清空屏幕
-		left++;
-		right--;
 	}
-	printf("%s\n", arr2);
 
 	system("pause");
 	return 0;
