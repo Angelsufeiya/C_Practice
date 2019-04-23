@@ -19,8 +19,14 @@ void game(){
 	ret = rand() % 100 + 1;
 	printf("游戏开始\n");
 	printf("请输入您想要猜的数字（1~~100）：");
+//取随机数（a ~ b)  rand()%(b - a + 1) + a
 	while (1){
-		scanf("%d", &guess);
+		while (!scanf("%d", &guess)){
+			getchar();
+			//用于吃掉输入的非数字字符！
+		}
+		//scanf("%d", &guess);
+		//一旦输入字符陷入死循环！
 		if (guess > ret){
 			printf("猜大了，请继续猜测：");
 		}
