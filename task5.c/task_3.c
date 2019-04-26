@@ -10,7 +10,9 @@ int main(){
 
 	for (i = 0; i < 3; i++){
 		printf("请输入您的密码：");
-		scanf("%s", password);//123456
+		scanf("%99s", password);//123456
+		//加“99”，表示宽度，最多要99个字符，是为了防止越界
+		//输入“%s”, 不需要“ & ”
 		if (0 == strcmp(password, "123456")){
 			printf("密码正确，登陆成功!\n");
 			break;
