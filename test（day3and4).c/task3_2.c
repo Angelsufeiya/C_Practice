@@ -12,10 +12,10 @@ int main()
 	for (i = 1; i <= 100; i++)
 	{
 		tmp = 1.0 / i * (i % 2 ? 1 : -1);//flag;
-		sum += tmp;	// sum = sum + tmp;
+		sum += tmp;	
 		//flag *= -1;
 	}
-	printf("%f\n", sum);//注意sum是小数，初学容易打成%d。
+	printf("%lf\n", sum);//注意sum是双精度浮点型，初学容易打成%d。
 	system("pause");
 	return 0;
 }

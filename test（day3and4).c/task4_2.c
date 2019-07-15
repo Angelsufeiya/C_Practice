@@ -53,26 +53,23 @@ int main()
 {
 	int i, j;
 	int sum = 0, count = 0;
-	int tmp[3] = { 0 };//定义数组的长度（只能长，不能短）
+	int tmp[10] = { 0 };//定义数组的长度（只能长，不能短）
 
-	for (i = 0; i < 1000; i++)
+	for (i = 0; i < 100000; i++)
 	{
-
 		for (j = i; j; j /= 10)//数位遍历（十进制）
 		{
 			tmp[count] = j % 10;
 			count++;
 		}
-
 		for (j = 0; j < count; j++)
 		{
-			sum += pow(tmp[j], count);  //求n次方的一个函数pow(前面是底数， 后面是次幂)
-										//"+="是因为pow一次只能算一位数。
+			sum += (int)pow(tmp[j], count);  //求n次方的一个函数pow，语法：double pow(double x,double y)
+											 //(前面(tmp[j]）是底数，后面(count)是次幂)
+											 //"+="是因为pow一次只能算一位底数;(int)用于强制类型转换
 		}
-
 		if (i == sum)
-			printf("%d ", i);
-
+			printf("%d\n", i);
 		count = sum = 0;
 	}
 
