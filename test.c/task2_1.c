@@ -7,12 +7,15 @@
 
 int main()
 {
-	int a=1, b=2, c;
-	printf("a=%d,b=%d\n", a,b);
+	int a = 1, b = 2;
+	int c;
+
+	printf("a = %d, b = %d\n", a, b);
 	c = a;
 	a = b;
 	b = c;
-	printf("a=%d,b=%d\n", a,b);
+	printf("a = %d, b = %d\n", a, b);
+
 	system("pause");
 	return 0;
 }

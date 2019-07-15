@@ -6,7 +6,7 @@
 int main()
 {
 	int input = 0;
-	printf("加入比特，你会好好学习吗？\n");
+	printf("加入比特，你会好好学习吗？(选择1 or 0)\n");
 	scanf("%d", &input);
 	if ( 1 == input)
 	{
