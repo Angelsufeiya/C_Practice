@@ -22,8 +22,7 @@ void game(){
 //取随机数（a ~ b)  rand()%(b - a + 1) + a
 	while (1){
 		while (!scanf("%d", &guess)){
-			getchar();
-			//用于吃掉输入的非数字字符！
+			getchar();//用于吃掉输入的非数字字符！
 		}
 		//scanf("%d", &guess);
 		//一旦输入字符陷入死循环！

@@ -50,7 +50,7 @@ int main()
 	int input = 0;
 	srand((unsigned int)time(NULL));
 	//“srand”函数设置随机数的生成器（调用rand函数）
-	//“(unsigned int)time(NULL)“、”作为生成随机数的起点
+	//“(unsigned int)time(NULL)”作为生成随机数的起点
 	//“time”函数：获得系统的时间，返回的是一位64位的整形数字
 	//“time()”函数，里面是一个指针
 	do

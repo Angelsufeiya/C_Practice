@@ -13,6 +13,8 @@ int main(){
 		scanf("%99s", password);//123456
 		//加“99”，表示宽度，最多要99个字符，是为了防止越界
 		//输入“%s”, 不需要“ & ”
+		//scanf("%c"):输入一个字符
+		//scanf("%s"):输入一串字符
 		if (0 == strcmp(password, "123456")){
 			printf("密码正确，登陆成功!\n");
 			break;
