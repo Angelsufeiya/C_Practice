@@ -3,16 +3,29 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//求第n个斐波那契数。
+//求第n个斐波那契数。 1 1 2 3 5 8 13 21 34 ...
 //递归函数
+//int fib(int n){
+//	if (n <= 2){
+//		return 1;
+//	}
+//	else{
+//		return fib(n - 1) + fib(n - 2);
+//	}
+//}
 
+//非递归函数
 int fib(int n){
-	if (n <= 2){
-		return 1;
+	int a = 1;
+	int b = 1;
+	int c = 1;
+	while (n > 2){
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
 	}
-	else{
-		return fib(n - 1) + fib(n - 2);
-	}
+	return c;
 }
 
 int main(){

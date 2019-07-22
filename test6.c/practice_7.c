@@ -4,15 +4,25 @@
 #include<stdlib.h>
 
 //ÇónµÄ½×³Ë
-//µİ¹éº¯Êı
 
+//µİ¹éº¯Êı
+//int fac(int n){
+//	if (n >= 2){
+//		return n*fac(n - 1);
+//	}
+//	else{
+//		return n;
+//	}
+//}
+
+//·Çµİ¹éº¯Êı
 int fac(int n){
-	if (n >= 2){
-		return n*fac(n - 1);
+	int result = 1;
+	while (n > 1){
+		result *= n;
+		n -= 1;
 	}
-	else{
-		return n;
-	}
+	return result;
 }
 
 int main(){
