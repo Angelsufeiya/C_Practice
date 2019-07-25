@@ -1,1 +1,2 @@
-﻿LINK : fatal error LNK1168: 无法打开 \\vmware-host\shared folders\文稿\visual studio 2013\Projects\test6.c\Debug\test6.c.exe 进行写入
+﻿  task_5.c
+  test6.c.vcxproj -> \\vmware-host\Shared Folders\文稿\Visual Studio 2013\Projects\test6.c\Debug\test6.c.exe
