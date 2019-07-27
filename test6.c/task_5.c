@@ -5,27 +5,26 @@
 #include<math.h>
 
 //实现一个函数，判断一个数是不是素数。
-void judgePrimeNum(int n){
+int judgePrimeNum(int n){
 	int i = 0;
-	int count = 1;
 	for (i = 2; i <= sqrt(n); i++){
 		if (n % i == 0){
-			count = 0;
-			break;
+			return 0;
 		}
 	}
-	if (count == 1){
+	return 1;
+}
+
+int main(){
+	int n, ret;
+	scanf("%d", &n);
+	ret = judgePrimeNum(n);
+	if (ret == 1){
 		printf("%d是素数\n", n);
 	}
 	else{
 		printf("%d不是素数\n", n);
 	}
-}
-
-int main(){
-	int n = 0;
-	scanf("%d", &n);
-	judgePrimeNum(n);
 	system("pause");
 	return 0;
 }

@@ -24,13 +24,13 @@ void init(int data[], int n, int input[]){
 	}
 }
 
-void reserve(int data[], int n, int input[]){
-	int i = 0;
-	int j = n - 1;
-	for (i = 0, j = n - 1; i < n; i++, j--){
-		int tmp = data[i];
-		data[i] = input[j];
-		input[j] = tmp;
+void reverse(int data[], int n){
+	int i, j;
+	int tmp;
+	for (i = 0, j = n - 1; i < j; i++, j--){//i不能小于n 否则逆置一遍后又重复逆置
+		tmp = data[i]; 
+		data[i] = data[j];
+		data[j] = tmp;
 	}
 }
 
@@ -43,11 +43,11 @@ void empty(int data[], int n){
 
 int main(){
 	int data[10] = { 0 };
-	int input[100] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int input[100] = { 1, 3, 5, 7, 9, 2, 4, 6, 8 };
 	printlog(data , 10);
 	init(data, 10, input);
 	printlog(data, 10);
-	reserve(data, 10, input);
+	reverse(data, 10);
 	printlog(data, 10);
 	empty(data, 10);
 	printlog(data, 10);
