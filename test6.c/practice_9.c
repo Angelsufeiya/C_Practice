@@ -4,3 +4,9 @@
 #include<stdlib.h>
 
 //ººÅµËşÎÊÌâ
+
+int main(){
+	int i = 3;
+	int n;
+	return 0;
+}
