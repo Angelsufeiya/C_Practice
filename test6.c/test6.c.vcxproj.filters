@@ -66,5 +66,8 @@
     <ClCompile Include="task_5.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bubbleSort.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
