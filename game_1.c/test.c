@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "game.h"
 
 void menu(){
 	printf("*****************************\n");
@@ -11,7 +12,8 @@ void menu(){
 }
 
 void game(){
-	printf("hehe\n");
+	char board[ROW][COL] = { 0 };
+
 }
 
 int main(){
