@@ -1,19 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "game.h"
 
 void menu(){
 	printf("*****************************\n");
 	printf("*******    1. play    *******\n");
-	printf("*******    2. exit    *******\n");
+	printf("*******    0. exit    *******\n");
 	printf("*****************************\n");
 }
 
 void game(){
-	char board[ROW][COL] = { 0 };
-
+	char board[Row][Col] = { 0 };
+	initBoard(board, Row, Col);
+	displayBoard(board, Row, Col);
 }
 
 int main(){
