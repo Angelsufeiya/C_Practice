@@ -14,7 +14,7 @@ void displayBoard(char board[Row][Col], int row, int col){
 	int i, j,tmp;
 	for (tmp = 0; tmp < row; tmp++){
 		for (i = 0; i < row; i++){
-			printf(" %c ",);
+			printf(" %c ", 0);
 			if (i < row - 1)
 				printf("|");
 		}
@@ -28,4 +28,12 @@ void displayBoard(char board[Row][Col], int row, int col){
 			printf("\n");
 		}
 	}
+}
+
+void peoplePlay(char board[Row][Col], int row, int col){
+
+}
+
+void computerPlay(char board[Row][Col], int row, int col){
+
 }

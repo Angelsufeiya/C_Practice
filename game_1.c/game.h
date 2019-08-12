@@ -6,3 +6,5 @@
 
 void initBoard(char board[Row][Col], int row, int col);
 void displayBoard(char board[Row][Col], int row, int col);
+void peoplePlay(char board[Row][Col], int row, int col);
+void computerPlay(char board[Row][Col], int row, int col);

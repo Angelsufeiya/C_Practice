@@ -1,2 +1,4 @@
-﻿  game.c
-\\vmware-host\shared folders\文稿\visual studio 2013\projects\game_1.c\game_1.c\game.c(17): error C2059: 语法错误:“)”
+﻿  test.c
+  game.c
+  正在生成代码...
+  game_1.c.vcxproj -> \\vmware-host\shared folders\文稿\visual studio 2013\Projects\game_1.c\Debug\game_1.c.exe

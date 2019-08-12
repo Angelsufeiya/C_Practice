@@ -13,6 +13,10 @@ void game(){
 	char board[Row][Col] = { 0 };
 	initBoard(board, Row, Col);
 	displayBoard(board, Row, Col);
+	while (1){
+		peoplePlay(board, Row, Col);
+		computerPlay(board, Row, Col);
+	}
 }
 
 int main(){
@@ -26,6 +30,7 @@ int main(){
 		{
 		case 1:
 			game();
+			break;
 		case 0:
 			printf("”Œœ∑“—πÿ±’£°");
 			break;
