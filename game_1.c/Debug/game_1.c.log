@@ -1,4 +1,5 @@
 ﻿  test.c
   game.c
   正在生成代码...
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\game_1.c\game_1.c\game.c(117): warning C4715: “judgeWin”: 不是所有的控件路径都返回值
   game_1.c.vcxproj -> \\vmware-host\shared folders\文稿\visual studio 2013\Projects\game_1.c\Debug\game_1.c.exe

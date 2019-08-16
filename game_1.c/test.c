@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "game.h"
 
 void menu(){
@@ -11,16 +9,32 @@ void menu(){
 
 void game(){
 	char board[Row][Col] = { 0 };
+	char ret = 0;
+
 	initBoard(board, Row, Col);
 	displayBoard(board, Row, Col);
 	while (1){
 		peoplePlay(board, Row, Col);
+		displayBoard(board, Row, Col);
+		ret = judgeWin(board, Row, Col);
+		if (ret != 'C')
+			break;
 		computerPlay(board, Row, Col);
+		displayBoard(board, Row, Col);
+		ret = judgeWin(board, Row, Col);
+		if (ret != 'C')
+			break;
 	}
+	if (ret == 'x')
+		printf("玩家赢\n");
+	else if (ret == '#')
+		printf("电脑赢\n");
+	else if (ret == 'Q')
+		printf("平局\n");
 }
 
 int main(){
-	int input;
+	int input = 0;
 
 	do{
 		menu();
