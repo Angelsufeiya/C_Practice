@@ -52,7 +52,6 @@ void peoplePlay(char board[Row][Col], int row, int col){
 
 void computerPlay(char board[Row][Col], int row, int col){
 	int i, j;
-	srand((unsigned int)time(NULL));//产生随机数
 
 	printf("电脑走：>\n");
 	while (1){
@@ -77,83 +76,122 @@ static int isFull(char board[Row][Col], int row, int col){
 	return 1;//棋盘已下满
 }
 
-char judgeWin(char board[Row][Col], int row, int col){
-	int i;
+//char judgeWin(char board[Row][Col], int row, int col){
+//	int i;
+//
+//	for (i = 0; i < row; i++){
+//		if (board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][1] != ' ')
+//			return board[i][0];
+//	}
+//	for (i = 0; i < col; i++){
+//		if (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[i][1] != ' ')
+//			return board[0][i];
+//	}
+//	if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[1][1] != ' ')
+//		return board[1][1];
+//	if (board[0][2] == board[1][1] && board[2][0] == board[1][1] && board[1][1] != ' ')
+//		return board[1][1];
+//	if (isFull(board, row, col) == 1){
+//		return 'Q';
+//	}
+//	return 'C';
+//}
 
-	for (i = 0; i < row; i++){
-		if (board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][1] != ' ')
-			return board[i][0];
+char judgeWin(char board[Row][Col], int row, int col){
+	int i, j, a, b, c, d;
+	int count = 1;
+	for (i = 0; i < row; i++){//每一行的胜利条件
+		for (j = 0; j < col - 1; j++){
+			if (board[i][j] != ' ' && board[i][j] == board[i][j + 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
 	}
-	for (i = 0; i < col; i++){
-		if (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[i][1] != ' ')
-			return board[0][i];
+
+	for (j = 0; j < col; j++){//每一列的胜利条件
+		for (i = 0; i < row - 1; i++){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
 	}
-	if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[1][1] != ' ')
-		return board[1][1];
-	if (board[0][2] == board[1][1] && board[2][0] == board[1][1] && board[1][1] != ' ')
-		return board[1][1];
+	
+	for (a = 0; a < row - 2; a++){	//按行查找左对角线
+		for (i = a, j = 0; j < col - 1; i++, j++){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
+	}
+	
+	for (b = 0; b < row - 2; b++){	//按列查找左对角线
+		for (i = 0, j = b; i < col - 1; i++, j++){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
+	}
+	
+	for (c = 0; c < row - 2; c++){	//按行查找右对角线
+		for (i = c, j = col - 1; j > 0; i++, j--){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
+	}
+	
+	for (d = row - 1; d > row - 2; d--){	//按列查找右对角
+		for (i = 0, j = d; i < col - 1; i++, j--){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
+	}
+
 	if (isFull(board, row, col) == 1){
 		return 'Q';
 	}
 	return 'C';
 }
-
-//char judgeWin(char board[Row][Col], int row, int col){
-//	int i, j;
-//	int count = 1;
-//	for (i = 0; i < row; i++){//每一行的胜利条件
-//		for (j = 0; j < col - 1; j++){
-//			if (board[i][j] != ' ' && board[i][j] == board[i][j + 1]){
-//				count++;
-//			}
-//			else{
-//				count = 1;
-//			}
-//		}
-//		if (count == row){
-//			return board[i][j];
-//		}
-//	}
-//	for (j = 0; j < col; j++){//每一列的胜利条件
-//		for (i = 0; i < row - 1; i++){
-//			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j]){
-//				count++;
-//			}
-//			else{
-//				count = 1;
-//			}
-//		}
-//		if (count == row){
-//			count = 1;
-//			return board[i][j];
-//		}
-//	}
-//
-//	for (i = 0; i < row - 1; i++){//左对角线的胜利条件
-//		for (j = 0; j < col - 1; j++){
-//			if (board[i][j] != ' ' && i == j && board[i][j] == board[i + 1][j + 1]){
-//				count++;
-//			}
-//			else{
-//				count = 1;
-//			}
-//		}
-//	}
-//	if (count == row){
-//		return board[i][j];
-//	}
-//
-//	////for (i = row - 1; i > 0; i--){//右对角线的胜利条件
-//	////	for (j = 0; j < col - 1; j++){
-//	////		if (board[i][j] != ' ' && i == j && board[i][j] == board[i + 1][j + 1]){
-//	////			count++;
-//	////		}
-//	////		else{
-//	////			count = 1;
-//	////		}
-//	////	}
-//	////}
-//	////if (count == row){
-//	////	return board[i][j];
-//	////}
-//}

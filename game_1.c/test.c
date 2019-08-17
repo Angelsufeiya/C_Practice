@@ -15,11 +15,13 @@ void game(){
 	displayBoard(board, Row, Col);
 	while (1){
 		peoplePlay(board, Row, Col);
+		system("cls");
 		displayBoard(board, Row, Col);
 		ret = judgeWin(board, Row, Col);
 		if (ret != 'C')
 			break;
 		computerPlay(board, Row, Col);
+		system("cls");
 		displayBoard(board, Row, Col);
 		ret = judgeWin(board, Row, Col);
 		if (ret != 'C')
@@ -35,11 +37,13 @@ void game(){
 
 int main(){
 	int input = 0;
+	srand((unsigned int)time(NULL));//产生随机数
 
 	do{
 		menu();
 		printf("请选择：");
 		scanf("%d", &input);
+		system("cls");
 		switch (input)
 		{
 		case 1:

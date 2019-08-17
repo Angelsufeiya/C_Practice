@@ -6,8 +6,9 @@
 
 //三字棋
 
-#define Row 3
-#define Col 3
+#define Row 10	//棋盘的行数
+#define Col 10	//棋盘的列数
+#define link 4  //用来判赢的相连棋子数
 
 //初始化
 void initBoard(char board[Row][Col], int row, int col);
