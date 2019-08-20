@@ -98,7 +98,7 @@ static int isFull(char board[Row][Col], int row, int col){
 //}
 
 char judgeWin(char board[Row][Col], int row, int col){
-	int i, j;
+	int i, j, a, b, c, d;
 	int count = 1;
 	for (i = 0; i < row; i++){//每一行的胜利条件
 		for (j = 0; j < col - 1; j++){
@@ -113,6 +113,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 				count = 1;
 			}
 		}
+		count = 1;
 	}
 
 	for (j = 0; j < col; j++){//每一列的胜利条件
@@ -128,25 +129,11 @@ char judgeWin(char board[Row][Col], int row, int col){
 				count = 1;
 			}
 		}
+		count = 1;
 	}
 	
-	for (i = 0; i < row - 2; i++){	//按行查找左对角线
-		for (j = 0; j < col - 1; j++){
-			if (board[i][j] != ' ' && board[i][j] == board[i + j][j + 1]){
-				count++;
-				if (count == link){
-					count = 1;
-					return board[i][j];
-				}
-			}
-			else{
-				count = 1;
-			}
-		}
-	}
-	
-	for (j = 0; j < col - 2; j++){	//按列查找左对角线
-		for (i = 0; i < row - 1; i++, i = j+i){
+	for (a = 0; a < row - 2; a++){	//按行查找左对角线
+		for (i = a, j = 0; j < col - 1; i++, j++){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
 				count++;
 				if (count == link){
@@ -158,10 +145,27 @@ char judgeWin(char board[Row][Col], int row, int col){
 				count = 1;
 			}
 		}
+		count = 1;
 	}
 	
-	for (i = 0; i < row - 2; i++){	//按行查找右对角线
-		for (j = col - 1; j > 0; j--, i = col - j){
+	for (c = 0; c < col - 2; c++){	//按列查找左对角线
+		for (i = 0, j = c; i < row - 1; i++, j++){
+			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
+				count++;
+				if (count == link){
+					count = 1;
+					return board[i][j];
+				}
+			}
+			else{
+				count = 1;
+			}
+		}
+		count = 1;
+	}
+	
+	for (b = 0; b < row - 2; b++){	//按行查找右对角线
+		for (i = b, j = col - 1; j > 0; i++, j--){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
 				count++;
 				if (count == link){
@@ -173,9 +177,10 @@ char judgeWin(char board[Row][Col], int row, int col){
 				count = 1;
 			}
 		}
+		count = 1;
 	}
 	
-	for (d = row - 1; d > row - 2; d--){	//按列查找右对角
+	for (d = row - 1; d > 1; d--){	//按列查找右对角
 		for (i = 0, j = d; i < row - 1; i++, j--){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
 				count++;
@@ -188,6 +193,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 				count = 1;
 			}
 		}
+		count = 1;
 	}
 
 	if (isFull(board, row, col) == 1){
