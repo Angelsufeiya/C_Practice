@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "game.h"
 
 void menu(){
@@ -10,6 +8,11 @@ void menu(){
 }
 
 void game(){
+	//创建两个二维数组
+	char show_map[ROW][COL];
+	char mine_map[ROW][COL];
+	//对两个数组进行初始化
+	Init(show_map, mine_map);
 	
 }
 
@@ -18,7 +21,7 @@ int main(){
 
 	do{
 		menu();
-		printf("请选择：");
+		printf("请输入您的选择：");
 		scanf("%d", &input);
 		switch (input)
 		{
@@ -29,7 +32,7 @@ int main(){
 			printf("游戏已关闭！");
 			break;
 		default:
-			printf("选择错误，请重新选择");
+			printf("输入错误，请重新输入\n");
 			break;
 		}
 	} while (input);
