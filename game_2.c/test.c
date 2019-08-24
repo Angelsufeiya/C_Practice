@@ -1,4 +1,4 @@
-#include "game.h"
+ï»¿#include "game.h"
 
 void menu(){
 	printf("*****************************\n");
@@ -8,20 +8,23 @@ void menu(){
 }
 
 void game(){
-	//´´½¨Á½¸ö¶şÎ¬Êı×é
+	//åˆ›å»ºä¸¤ä¸ªäºŒç»´æ•°ç»„
 	char show_map[ROW][COL];
 	char mine_map[ROW][COL];
-	//¶ÔÁ½¸öÊı×é½øĞĞ³õÊ¼»¯
+	//å¯¹ä¸¤ä¸ªæ•°ç»„è¿›è¡Œåˆå§‹åŒ–
 	Init(show_map, mine_map);
+	//æ‰“å°åœ°å›¾
+	printMap(show_map);
 	
 }
 
 int main(){
 	int input;
+	srand((unsigned int)time(NULL));
 
 	do{
 		menu();
-		printf("ÇëÊäÈëÄúµÄÑ¡Ôñ£º");
+		printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©ï¼š");
 		scanf("%d", &input);
 		switch (input)
 		{
@@ -29,10 +32,10 @@ int main(){
 			game();
 			break;
 		case 0:
-			printf("ÓÎÏ·ÒÑ¹Ø±Õ£¡");
+			printf("æ¸¸æˆå·²å…³é—­!\n");
 			break;
 		default:
-			printf("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë\n");
+			printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n");
 			break;
 		}
 	} while (input);
