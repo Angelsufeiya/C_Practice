@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-//三字棋
+//三子棋(五子棋)
 
-#define Row 3	//棋盘的行数
-#define Col 3	//棋盘的列数
+#define Row  3	//棋盘的行数
+#define Col  3	//棋盘的列数
 #define link 3  //用来判赢的相连棋子数
 
 //初始化

@@ -33,6 +33,7 @@ void game(){
 		printf("╣Гдтс╝\n");
 	else if (ret == 'Q')
 		printf("ф╫╬ж\n");
+
 }
 
 int main(){

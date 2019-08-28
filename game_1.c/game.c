@@ -132,7 +132,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 		count = 1;
 	}
 	
-	for (a = 0; a < row - 2; a++){	//按行查找左对角线
+	for (a = 0; a < row - link + 1; a++){	//按行查找左对角线
 		for (i = a, j = 0; j < col - 1; i++, j++){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
 				count++;
@@ -148,7 +148,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 		count = 1;
 	}
 	
-	for (c = 0; c < col - 2; c++){	//按列查找左对角线
+	for (c = 0; c < col - link + 1; c++){	//按列查找左对角线
 		for (i = 0, j = c; i < row - 1; i++, j++){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j + 1]){
 				count++;
@@ -164,7 +164,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 		count = 1;
 	}
 	
-	for (b = 0; b < row - 2; b++){	//按行查找右对角线
+	for (b = 0; b < row - link + 1; b++){	//按行查找右对角线
 		for (i = b, j = col - 1; j > 0; i++, j--){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
 				count++;
@@ -180,7 +180,7 @@ char judgeWin(char board[Row][Col], int row, int col){
 		count = 1;
 	}
 	
-	for (d = row - 1; d > 1; d--){	//按列查找右对角
+	for (d = row - 1; d >= link - 1; d--){	//按列查找右对角
 		for (i = 0, j = d; i < row - 1; i++, j--){
 			if (board[i][j] != ' ' && board[i][j] == board[i + 1][j - 1]){
 				count++;
