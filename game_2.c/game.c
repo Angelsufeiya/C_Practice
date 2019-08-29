@@ -29,7 +29,21 @@ void Init(char show_map[ROW][COL], char mine_map[ROW][COL]){
 
 void printMap(char show_map[ROW][COL]){
 	int row, col;
+
+	//先打印第一行（坐标）
+	printf("   |");
 	for (row = 0; row < ROW; row++){
+		printf("%d ", row);
+	}
+	printf("\n");
+	//打印一行分隔符
+	for (row = 0; row < ROW; row++){
+		printf("---");
+	}
+	printf("\n");
+	//按照每行分别打印
+	for (row = 0; row < ROW; row++){
+		printf(" %d |", row);
 		for (col = 0; col < COL; col++){
 			printf("%c ", show_map[row][col]);
 		}
