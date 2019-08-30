@@ -13,9 +13,42 @@ void game(){
 	char mine_map[ROW][COL];
 	//对两个数组进行初始化
 	Init(show_map, mine_map);
-	//打印地图
-	printMap(show_map);
-	
+	//shift+f8(fn + option) 快速进行格式化
+	//点击+option 按列选中
+	int blank_count = 0;
+	while (1){
+		//1.打印地图
+		printMap(show_map);
+		//2.让用户输入一组坐标,并进行校验！
+		printf("请输入一组坐标（row col)：");
+		int row = 0;
+		int col = 0;
+		scanf("%d %d", row, col);
+		if (row < 0 || row >= ROW){
+			if (col < 0 || col >= COL){
+				printf("输入错误,请重新输入！\n");
+				continue;
+			}
+		}
+		if (show_map[row][col] != '*'){
+			//这个位置已经被翻开
+			printf("您输入的坐标已被翻开，请重新输入！\n");
+		}
+		//3.判断是否踩雷
+		if (mine_map[row][col] == '1'){
+			//踩雷了，游戏结束！
+			printf("game over!\n");
+			break;
+		}
+		blank_count++;
+		//4.判断是否游戏胜利
+		if (blank_count == ROW*COL - MINE_COUNT){
+			printf("恭喜你，扫雷成功！");
+			break;
+		}
+		//5.更新地图，将当前位置变成一个数字
+		updateShowMap(show_map, mine_map, row, col);
+	}
 }
 
 int main(){

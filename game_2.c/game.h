@@ -9,3 +9,4 @@
 
 void Init(char show_map[ROW][COL], char mine_map[ROW][COL]);
 void printMap(char show_map[ROW][COL]);
+void updateShowMap(char show_map[ROW][COL], char mine_map[ROW][COL], int row, int col);
