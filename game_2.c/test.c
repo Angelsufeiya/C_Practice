@@ -16,6 +16,8 @@ void game(){
 	//shift+f8(fn + option) 快速进行格式化
 	//点击+option 按列选中
 	int blank_count = 0;
+	int row = 0;
+	int col = 0;
 	while (1){
 		//1.打印地图
 		printMap(show_map);
@@ -23,7 +25,7 @@ void game(){
 		printf("请输入一组坐标（row col)：");
 		int row = 0;
 		int col = 0;
-		scanf("%d %d", row, col);
+		scanf("%d%d", &row, &col);
 		if (row < 0 || row >= ROW){
 			if (col < 0 || col >= COL){
 				printf("输入错误,请重新输入！\n");
@@ -46,9 +48,9 @@ void game(){
 			printf("恭喜你，扫雷成功！");
 			break;
 		}
-		//5.更新地图，将当前位置变成一个数字
-		updateShowMap(show_map, mine_map, row, col);
 	}
+	//3.更新地图，将当前位置变成一个数字
+	updateShowMap(show_map, mine_map, row, col);
 }
 
 int main(){

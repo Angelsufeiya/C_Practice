@@ -11,7 +11,7 @@ void Init(char show_map[ROW][COL], char mine_map[ROW][COL]){
 	//mine_map 初始化
 	for (row = 0; row < ROW; row++){
 		for (col = 0; col < COL; col++){
-			show_map[row][col] = '0';
+			mine_map[row][col] = '0';
 		}
 	}
 	//随机生成10个位置作为地雷
@@ -54,13 +54,30 @@ void printMap(char show_map[ROW][COL]){
 void updateShowMap(char show_map[ROW][COL], char mine_map[ROW][COL], int row, int col){
 	//判断当前位置（row,col)，周围格子有几个雷。
 	int count = 0;
-	if (row - 1 >= 0 && col - 1 >= 0 && mine_map[row - 1][col -1] = '1'){
+	if (row - 1 >= 0 && col - 1 >= 0 && mine_map[row - 1][col - 1] == '1'){
 		count++;
 	}
-	if (row - 1 >= 0 && mine_map[row - 1][ col ] = '1'){
+	if (row - 1 >= 0 && mine_map[row - 1][col] == '1'){
 		count++;
 	}
-	if (row - 1 >= 0 && col + 1 <= COL mine_map[row - 1][col + 1] = '1'){
+	if (row - 1 >= 0 && col + 1 <= COL && mine_map[row - 1][col + 1] == '1'){
 		count++;
 	}
+	if (col - 1 > 0 &&mine_map[row][col - 1] == '1'){
+		count++;
+	}
+	if (col + 1 <= COL &&  mine_map[row][col + 1] == '1'){
+		count++;
+	}
+	if (row + 1 <= ROW && col - 1 >= 0 && mine_map[row + 1][col - 1] == '1'){
+		count++;
+	}
+	if (row + 1 <= ROW && mine_map[row + 1][col] == '1'){
+		count++;
+	}
+	if (row + 1 <= ROW && col + 1 <= COL && mine_map[row + 1][col + 1] == '1'){
+		count++;
+	}
+	//count 里面的值就是周围雷的个数 
+	show_map[row][col] = count + '0';
 }
