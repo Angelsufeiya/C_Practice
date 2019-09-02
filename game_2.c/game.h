@@ -8,6 +8,6 @@
 #define COL 9
 #define MINE_COUNT 10
 
-void Init(char show_map[ROW][COL], char mine_map[ROW][COL]);
+void Init(char show_map[ROW][COL], char mine_map[ROW][COL], int Row, int Col);
 void printMap(char show_map[ROW][COL]);
 void updateShowMap(char show_map[ROW][COL], char mine_map[ROW][COL], int row, int col);

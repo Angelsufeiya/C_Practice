@@ -1,16 +1,16 @@
 #include "game.h"
 
-void Init(char show_map[ROW][COL], char mine_map[ROW][COL]){
+void Init(char show_map[ROW][COL], char mine_map[ROW][COL], int Row, int Col){
 	int row, col;
 	//show_map 全都初始化 x
-	for (row = 0; row < ROW; row++){
-		for (col = 0; col < COL; col++){
-			show_map[row][col] = 'x';
+	for (row = 0; row < Row; row++){
+		for (col = 0; col < Col; col++){
+			show_map[row][col] = '*';
 		}
 	}
 	//mine_map 初始化
-	for (row = 0; row < ROW; row++){
-		for (col = 0; col < COL; col++){
+	for (row = 0; row < Row; row++){
+		for (col = 0; col < Col; col++){
 			mine_map[row][col] = '0';
 		}
 	}
@@ -27,7 +27,7 @@ void Init(char show_map[ROW][COL], char mine_map[ROW][COL]){
 	}
 }
 
-void printMap(char show_map[ROW][COL]){
+void printMap(char show_map[ROW][COL], char mine_map[ROW][COL]){
 	int row, col;
 
 	//先打印第一行（坐标）
