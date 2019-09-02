@@ -18,8 +18,8 @@
 //}
 
 void reverse_string(char * str){
-	int end = strlen(str) - 1;
 	char tmp = str[0];
+	int end = strlen(str) - 1;
 	if (*str){
 		str[0] = str[end];
 		str[end] = '\0';
