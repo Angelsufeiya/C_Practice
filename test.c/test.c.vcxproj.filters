@@ -15,10 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.c">
+    <ClCompile Include="practice1.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="practice0.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task2_1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task2_2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task2_3.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task2_4.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task2_5.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task1_1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task1_2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task1_3.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

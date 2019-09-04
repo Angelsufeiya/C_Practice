@@ -1,47 +1,49 @@
-//求两个数的最大公约数
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<stdio.h>
 #include<stdlib.h>
 
-int main()
-{
-	int i, a, b, max, min;
-	scanf("%d%d", &a, &b);
-	if (a > b)
-	{
-		min = b;
-	}
-	else
-	{
-		min = a;
-	}
-	for (i = 2; i <= min; i++)
-	{
-		if (a%i == 0 && b%i == 0)
-		{
-			max = i;
-		}
-		else
-		{
-			continue;
-		}
-	}
-	printf("最大公约数是%d\n", max);
-	system("pause");
-	return 0;
-}
+//求两个数的最大公约数
+
+//int main()
+//{
+//	int i, a, b;
+//	int max = 1, min;
+//
+//	printf("请输入两个数：");
+//	scanf("%d%d", &a, &b);
+//	if (a > b)	//判断输入两个个数的大小
+//	{
+//		min = b;
+//	}
+//	else
+//	{
+//		min = a;
+//	}
+//	for (i = 2; i <= min; i++)
+//	{
+//		if (a%i == 0 && b%i == 0)
+//		{
+//			max = i;
+//		}
+//		else
+//		{
+//			continue;
+//		}
+//	}
+//	printf("最大公约数是%d\n", max);
+//
+//	system("pause");
+//	return 0;
+//}
 
 //辗转相除法
-//#define _CRT_SECURE_NO_WARNINGS
-//
-//#include<stdio.h>
-//#include<stdlib.h>
-//
+
 //int main()
 //{
 //	int a, b, c;
+//
+//	printf("请输入两个数：");
 //	scanf("%d%d", &a, &b);
 //	while ( c=a % b )
 //	{
@@ -53,3 +55,52 @@ int main()
 //
 //	return 0;
 //}
+
+//更相减损法
+
+int main(){
+	int a, b, c;
+
+	printf("请输入两个数：");
+	scanf("%d%d", &a, &b);
+
+	if (a > b){
+		//不做任何改变
+	}
+	else{
+		a = a + b;
+		b = a - b;
+		a = a - b;
+	}
+
+	if (a % b == 0){
+		printf("最大公约数是%d\n", b);
+	}
+	else{
+		while (a % 2 == 0 && b % 2 == 0) {
+			a /= 2;
+			b /= 2;
+		}
+
+		while (1){
+			c = a - b;
+			if (b == c){
+				break;
+			}
+			a = b;
+			b = c;
+			if (a > b){
+				//不做任何改变
+			}
+			else{
+				a = a + b;
+				b = a - b;
+				a = a - b;
+			}
+		}
+		printf("最大公约数是%d\n", b);
+	}
+
+	system("pause");
+	return 0;
+}
