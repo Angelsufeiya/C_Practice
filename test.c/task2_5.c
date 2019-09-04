@@ -59,47 +59,27 @@
 //更相减损法
 
 int main(){
-	int a, b, c;
+	int a, b;
+	int count = 1;
 
 	printf("请输入两个数：");
 	scanf("%d%d", &a, &b);
 
-	if (a > b){
-		//不做任何改变
-	}
-	else{
-		a = a + b;
-		b = a - b;
-		a = a - b;
+	while (a % 2 == 0 && b % 2 == 0) {
+		a /= 2;
+		b /= 2;
+		count *= 2;
 	}
 
-	if (a % b == 0){
-		printf("最大公约数是%d\n", b);
+	while (a != b)
+	{
+		if (a > b)
+			a -= b;
+		else
+			b -= a;
 	}
-	else{
-		while (a % 2 == 0 && b % 2 == 0) {
-			a /= 2;
-			b /= 2;
-		}
 
-		while (1){
-			c = a - b;
-			if (b == c){
-				break;
-			}
-			a = b;
-			b = c;
-			if (a > b){
-				//不做任何改变
-			}
-			else{
-				a = a + b;
-				b = a - b;
-				a = a - b;
-			}
-		}
-		printf("最大公约数是%d\n", b);
-	}
+	printf("最大公约数是%d\n", b*count);
 
 	system("pause");
 	return 0;

@@ -1,3 +1,4 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (test.c.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   task2_5.c
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\test(day1&&2).c\test.c\task2_5.c(62): warning C4101: “c”: 未引用的局部变量
   test.c.vcxproj -> \\vmware-host\Shared Folders\文稿\Visual Studio 2013\Projects\test(day1&&2).c\Debug\task(day1and2).c.exe
