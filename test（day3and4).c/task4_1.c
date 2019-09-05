@@ -1,3 +1,8 @@
+#define  _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include<stdlib.h>
+
 //1.在屏幕上输出以下图案：
 //*
 //***
@@ -13,16 +18,12 @@
 //***
 //*
 
-#define  _CRT_SECURE_NO_WARNINGS
-
-#include<stdio.h>
-#include<stdlib.h>
-
 //int main()
 //{
 //	int i, j;
 //	int n;
 //
+//	printf("请输入菱形上半部分的行数：");
 //	scanf("%d", &n);
 //
 //	for (i = 1; i <= n; i++)
@@ -46,14 +47,14 @@
 //}
 
 //把星星居中，上下形成三角形。
-
-
 //每行i个星星，最大长度为n，则每行行需要n-i个空格
+
 int main()
 {
 	int i, j;
 	int n;
 
+	printf("请输入菱形上半部分的行数：");
 	scanf("%d", &n);
 
 	for (i = 1; i <= n; i++)

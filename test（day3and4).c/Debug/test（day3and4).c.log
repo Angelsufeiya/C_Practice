@@ -1,3 +1,3 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (test（day3and4).c.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  task4_2.c
+  task4_1.c
   test（day3and4).c.vcxproj -> \\vmware-host\Shared Folders\文稿\Visual Studio 2013\Projects\test(day3&&4).c\Debug\task（day3and4).c.exe
