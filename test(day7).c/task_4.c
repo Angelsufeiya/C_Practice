@@ -29,11 +29,11 @@ void reverse_string(char * str){
 }
 
 int main(){
-	char str[10] = "bitekeji";
-
-	//reverse_string(str, str + strlen(str) - 1);
+	char str[10] = "abcdefg";
+	printf("ÄæÖÃÇ°µÄË³Ğò£º%s\n", str);
+//	reverse_string(str, str + strlen(str) - 1);
 	reverse_string(str);
-	printf("%s\n", str);
+	printf("ÄæÖÃºóµÄË³Ğò£º%s\n", str);
 
 	system("pause");
 	return 0;
