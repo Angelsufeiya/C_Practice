@@ -9,7 +9,45 @@
 //1 2 1
 //1 3 3 1
 
+void prinfArray(int * arr, int n){
+	int i;
+
+	for (i = 0; i < n; i++){
+		printf("%d ", arr[i]);
+	}
+	putchar('\n');
+}
+
+//一维数组操作
+
 int main(){
+	int input;
+	int data[30] = { 0 };
+	int i, j;
+
+	printf("请输入你要打印的杨辉三角的行数：");
+	scanf("%d", &input);
+
+	data[0] = 1;
+	puts("1");
+	for (i = 1; i < input; i++){
+		data[i] = 1;
+
+		for (j = i - 1; j > 0; j--){
+			data[j] += data[j - 1];
+		}
+		data[0] = 1;
+
+		prinfArray(data, i + 1);
+	}
+
+	system("pause");
+	return 0;
+}
+
+//二维数组操作
+
+int _main(){
 	int input;
 	int data[30][30] = { 0 };
 	int i, j;
