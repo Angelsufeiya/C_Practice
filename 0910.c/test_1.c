@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 
-int main(){
+int main1(){
 	int num = 0x11223344;
 	int* p = &num;
 	char* p2 = (char*)p;
