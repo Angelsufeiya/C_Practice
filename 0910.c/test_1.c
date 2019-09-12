@@ -1,14 +1,37 @@
 #include <stdio.h>
 #include<stdlib.h>
 
-int main1(){
-	int num = 0x11223344;
+typedef int* IntPtr;
+typedef int(*Ptr)[10];
+
+int main(){
+	int a = 10;
+	const int* const p = &a;
+	p++;
+	*p = 20;
+
+	//int arr[10] = { 1, 2, 3, 4 };
+	////&arr => int(*p)[10]
+	////一个数组指针，是一个指针，指向一个长度为10个元素数组
+	//Ptr p = &arr;
+	//int(*p)[10] = &arr;
+	////指针数组
+	//int* arr2[10];
+
+	//int num = 10;
+	//int* p = &num;
+
+	//if (p != NULL){
+	//	*p = 20;
+	//}
+
+	/*int num = 0x11223344;
 	int* p = &num;
 	char* p2 = (char*)p;
 
 	*p2 = 0x55;
 	printf("%x\n", *p);
-
+*/
 	//int num1 = 10;
 	//int* p1 = &num1;//int* 基本数据类型（与 int, double并列关系）
 	//double num2 = 20.0;

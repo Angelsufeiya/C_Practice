@@ -66,7 +66,6 @@
   <ItemGroup>
     <ClCompile Include="test.c" />
     <ClCompile Include="test_1.c" />
-    <ClCompile Include="test_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
