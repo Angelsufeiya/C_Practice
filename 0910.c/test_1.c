@@ -4,9 +4,9 @@
 typedef int* IntPtr;
 typedef int(*Ptr)[10];
 
-int main(){
+int main1(){
 	int a = 10;
-	const int* const p = &a;
+	int* p = &a;
 	p++;
 	*p = 20;
 
