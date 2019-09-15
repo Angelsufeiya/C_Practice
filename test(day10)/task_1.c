@@ -8,7 +8,7 @@
 
 int count_one_bits(unsigned int value)
 {
-	// 返回 1的位数 
+	int i
 }
 
 int main(){

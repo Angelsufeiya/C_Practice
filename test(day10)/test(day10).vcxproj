@@ -65,6 +65,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="task_1.c" />
+    <ClCompile Include="task_3.c" />
+    <ClCompile Include="task_4.c" />
+    <ClCompile Include="taxk_2.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
