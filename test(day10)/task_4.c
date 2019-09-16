@@ -8,7 +8,20 @@
 //1999 2299
 //输出例子 : 7
 
+int count_one_bits(unsigned int value){
+	int i, count = 0;
+	for (i = value; i; i /= 2){
+		count += i % 2;
+	}
+	return count;
+}
+
 int main(){
+	int input1, input2;
+
+	printf("请输入两个个数（十进制）：");
+	scanf("%d%d", &input1, &input2);
+	printf("%d\n ", count_one_bits(input1^input2));
 
 	system("pause");
 	return 0;

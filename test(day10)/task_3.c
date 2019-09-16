@@ -6,6 +6,18 @@
 //输出一个整数的每一位。
 
 int main(){
+	int input = 0;
+	int i, count = 0;
+	char num[50] = { 0 };
+
+	printf("请输入一个数（十进制）：");
+	scanf("%d", &input);
+	for (i = input; i; i /= 10){
+		num[count++] = i % 10;
+	}
+	for (i = --count; i >= 0; i--){
+		printf("%d ", num[i]);
+	}
 
 	system("pause");
 	return 0;
