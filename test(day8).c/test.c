@@ -22,7 +22,7 @@ int judge(int a, int  b, int  c) {
 	return i == 0x3fe;
 }
 
-int main10(){
+int main(){
 	int a, b, c;
 	for (a = 123; a < 329; a++){
 		for (b = 246; b < 658; b++){

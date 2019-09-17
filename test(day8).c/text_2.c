@@ -20,14 +20,14 @@ void prinfArray(int * arr, int n){
 
 //一维数组操作
 
-int main(){
-	int input;
+int _main(){
+	int input = 0;
 	int data[30] = { 0 };
 	int i, j;
 
 	printf("请输入你要打印的杨辉三角的行数：");
 	scanf("%d", &input);
-
+	
 	data[0] = 1;
 	puts("1");
 	for (i = 1; i < input; i++){
@@ -47,7 +47,7 @@ int main(){
 
 //二维数组操作
 
-int _main(){
+int main2(){
 	int input;
 	int data[30][30] = { 0 };
 	int i, j;
