@@ -16,7 +16,7 @@ int count_one_bits(unsigned int value){
 	return count;
 }
 
-int main(){
+int main4(){
 	int input1, input2;
 
 	printf("请输入两个个数（十进制）：");

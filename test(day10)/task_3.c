@@ -5,7 +5,7 @@
 
 //输出一个整数的每一位。
 
-int main(){
+int main3(){
 	int input = 0;
 	int i, count = 0;
 	char num[50] = { 0 };

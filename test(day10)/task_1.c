@@ -22,7 +22,7 @@ int count_one_bits2(unsigned int value){
 	return count;
 }
 
-int main(){
+int main1(){
 	int input = 0;
 	
 	printf("请输入一个数（十进制）：");
