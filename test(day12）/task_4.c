@@ -19,8 +19,8 @@ void reverse_part(char* str, int start, int end){
 	}
 }
 
-int main(){
-	char src[] = "I'm a fashion student";
+int main4(){
+	char src[] = "student a am I";
 	int i;
 	int start = 0, end;
 	

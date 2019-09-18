@@ -7,7 +7,7 @@
 //这个函数的返回值value的二进制位模式从左到右翻转后的值。
 
 unsigned int reverse_bit(unsigned int value){
-	int i, tmp, sum = 0;
+	unsigned int i, tmp, sum = 0;
 	for (i = 0; i < 32; i++, value /= 2){
 		tmp = value % 2;
 		sum = sum * 2 + tmp;
@@ -15,7 +15,7 @@ unsigned int reverse_bit(unsigned int value){
 	return sum;
 }
 
-int main(){
+int main1(){
 	int input;
 
 	printf("请输入一个数：");

@@ -8,16 +8,16 @@ void reverse(char* src){
 	char* p;
 	char tmp[256] = { 0 };
 	while (p = strrchr(src, ' ')){
-		*p = 0;
 		strcat(tmp, p + 1);
 		strcat(tmp, " ");
+		*p = 0;
 	}
 	strcat(tmp, src);
 	strcpy(src, tmp);
 }
 
 int main(){
-	char src[] = "I'm a fashion student";
+	char src[] = "student a am I";
 
 	reverse(src);
 	puts(src);
