@@ -7,7 +7,8 @@
 //比如： 15 0000 1111 4 个 1
 
 int count_one_bits1(unsigned int value){
-	int i, count = 0;
+	unsigned int i;
+	int count = 0;
 	for (i = value; i; i /= 2){
 		count += i % 2;
 	}
@@ -22,7 +23,7 @@ int count_one_bits2(unsigned int value){
 	return count;
 }
 
-int main1(){
+int main(){
 	int input = 0;
 	
 	printf("请输入一个数（十进制）：");
