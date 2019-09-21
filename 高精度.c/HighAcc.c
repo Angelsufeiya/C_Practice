@@ -23,7 +23,7 @@ void dealNumber(HighAcc *h){
 	}
 }
 
-//数子再逆序打印（这样打印出来后，看起来就是顺序）
+//数字再逆序打印（这样打印出来后，看起来就是顺序）
 void printNumber(HighAcc h){
 	int i;
 	for (i = h.len - 1; i >= 0; i--){
