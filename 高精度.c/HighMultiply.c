@@ -10,7 +10,7 @@ typedef struct {
 	int len;		//数字有多长
 }HighAcc;
 
-//数字逆序存储（数字从左到右加）
+//数字逆序存储(数组从左到右乘）
 void dealNumber(HighAcc *h){
 	int start = 0, end = strlen(h->data) - 1;
 	char tmp;
@@ -23,7 +23,7 @@ void dealNumber(HighAcc *h){
 	}
 }
 
-//数子再逆序打印（这样打印出来后，看起来就是顺序）
+//数子再逆序打印（看起来就是顺序）
 void printNumber(HighAcc h){
 	int i;
 	for (i = h.len - 1; i >= 0; i--){
@@ -31,18 +31,24 @@ void printNumber(HighAcc h){
 	}
 }
 
-//高精度加法
-HighAcc add(HighAcc m_num1, HighAcc m_num2){
+//高精度乘法
+HighAcc mul(HighAcc m_num1, HighAcc m_num2){
 	HighAcc sum = { 0 };
-	int i, tmp;
-	int maxlen = m_num1.len >= m_num2.len ? m_num1.len : m_num2.len;
-
-	for (i = 0; i < maxlen; i++){
-		tmp = m_num1.data[i] + m_num2.data[i] + sum.data[i];
-		sum.data[i] = tmp % 10;
-		sum.data[i + 1] = tmp / 10;//判断是否需要高位+1
+	int i, j, tmp;
+	
+	if ((m_num1.len == 1 && m_num1.data[0] == 0) || (m_num2.len == 1 && m_num2.data[0] == 0)){
+		sum.len = 1;
+		return sum;
 	}
-	sum.len = maxlen + sum.data[maxlen];//得到sum 的长度
+
+	for (i = 0; i < m_num1.len; i++){
+		for (j = 0; j < m_num2.len; j++){
+			tmp = m_num1.data[i] * m_num2.data[j] + sum.data[i + j];
+			sum.data[i + j] = tmp % 10;
+			sum.data[i + j + 1] += tmp / 10;
+		}
+	}
+	sum.len = m_num1.len + m_num2.len - !sum.data[m_num1.len + m_num2.len - 1];//得到sum 的长度
 	return sum;
 }
 
@@ -56,7 +62,7 @@ int main(){
 	dealNumber(&num1);
 	dealNumber(&num2);
 
-	sum = add(num1, num2);
+	sum = mul(num1, num2);
 
 	printNumber(sum);
 	putchar('\n');

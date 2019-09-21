@@ -18,5 +18,11 @@
     <ClCompile Include="HighAcc.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="HighMultiply.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HighMinus.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
