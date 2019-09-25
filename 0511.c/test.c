@@ -14,6 +14,7 @@ int main(){
 }
 #endif
 
+#if 0
 int main(){
 	char a[] = "abc\012abc";
 	char b[] = "abc\0aba";
@@ -26,5 +27,13 @@ int main(){
 	printf("%d,%d", n, m);
 
 	system("pause");
+	return 0;
+}
+#endif
+
+int main(){
+	unsigned int a = -2;
+	printf("a = %d, a =%u", a, a);
+
 	return 0;
 }
