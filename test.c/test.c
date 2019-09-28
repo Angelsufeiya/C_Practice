@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+#if 0
 int main(){
 	int i = 10;
 	int j = 20;
@@ -20,5 +22,18 @@ int main(){
 	printf("hello word!\n");
 
 	system("pause");
+	return 0;
+}
+#endif
+
+int main(){
+	int a = -10;
+	unsigned int b = 5;
+	if (a + b > 0){
+		printf(">0\n");//≥Ã–Ú÷¥––
+	}
+	else{
+		printf("<0\n");
+	}
 	return 0;
 }
