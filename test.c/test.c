@@ -26,6 +26,7 @@ int main(){
 }
 #endif
 
+#if 0
 int main(){
 	int a = -10;
 	unsigned int b = 5;
@@ -37,3 +38,12 @@ int main(){
 	}
 	return 0;
 }
+#endif
+
+#if 0
+int main(){
+	char a = 258;
+	printf("%d\n", a);//Êä³ö2
+	return 0;
+}
+#endif

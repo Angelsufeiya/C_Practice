@@ -1,2 +1,3 @@
 ﻿  test.c
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\test.c\test.c\test.c(44): warning C4305: “初始化”: 从“int”到“char”截断
   test.c.vcxproj -> \\vmware-host\Shared Folders\文稿\Visual Studio 2013\Projects\test.c\Debug\test.c.exe
