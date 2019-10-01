@@ -47,3 +47,21 @@ int main(){
 	return 0;
 }
 #endif
+
+#if 0
+int main(){
+	char a = 0x80;
+	unsigned char b = 0x80;
+	unsigned int c = a;
+	int d = a;
+
+	printf("a = %d, a = %u\n", a, a);
+	printf("b = %d, b = %u\n", b, b);
+	printf("c = %d, c = %u\n", c, c);
+	printf("d = %d, d = %u\n", d, d);
+
+	system("pause");
+	return 0;
+}
+#endif
+
