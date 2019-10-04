@@ -10,7 +10,7 @@ int find_round(char * src, char * find){
 	return strstr(tmp, find) ? 1 : 0;//ÔÚtmpÀïÃæÕÒfind
 }
 
-int main(){
+int main1(){
 	printf("%d\n", find_round("ABCDE", "BCDEA"));
 
 	return 0;

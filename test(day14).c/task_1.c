@@ -8,7 +8,8 @@
 #include<stdlib.h>
 #include<string.h>
 
-#if 0
+#if 1
+//字符串反转函数
 void reverse_part(char *src, int start, int end){
 	int i, j;
 	char tmp;
@@ -20,15 +21,17 @@ void reverse_part(char *src, int start, int end){
 	}
 }
 
+//左旋函数
 void round(char * src, int time){
 	int len = strlen(src);
-	int pos = time%len;
+	int pos = time%len;//反转一个字符串的长度等于没有反转（防止输入的数大于字符串长度）
 
-	reverse_part(src, 0, pos - 1);
-	reverse_part(src, pos, len - 1);
-	reverse_part(src, 0, len - 1);
+	reverse_part(src, 0, pos - 1);//反转前n个字符串
+	reverse_part(src, pos, len - 1);//反转剩下的字符串
+	reverse_part(src, 0, len - 1);//整体反转
 }
 #else
+//左旋函数
 void round(char * src, int time){
 	char tmp[256] = { 0 };
 	int len = strlen(src);
