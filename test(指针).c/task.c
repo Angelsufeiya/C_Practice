@@ -31,7 +31,7 @@ int main43() {
 	return 0;
 }
 
-int main4(int argc, char * argv[])
+int main4()
 {
 	int a[3][2] = { (0, 1), (2, 3), (4, 5) };
 	//∂∫∫≈±Ì¥Ô Ω 
@@ -78,7 +78,7 @@ int main8() {
 	return 0;
 }
 
-int main()
+int main9()
 {
 	char *str[] = { "welcome", "to", "Fortemedia", "Nanjing" };
 	char**p = str + 1;
