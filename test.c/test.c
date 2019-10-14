@@ -142,7 +142,7 @@ int main()
 
 	int i = -20;//1111 1111 1111 1111 1111 1111 1110 1100‬
 	unsigned int j = 10;// 0000 0000 0000 0000 0000 0000 0000 1010
-	//int 与unsigned int参与运算或者比较大小时，int 均转为unsigned int型。
+	//int 与unsigned int参与运算或者比较大小时，int 均转为unsigned int型.
 	printf("%d\n", i + j);// -10
 	printf("%u\n", i + j);// 4294967286(1111 1111 1111 1111 1111 1111 1111 0110‬)
 	return 0;
@@ -162,7 +162,7 @@ int main(){
 }
 #endif
 
-#if 1
+#if 0
 int main()
 {
 	char a[1000];//取值范围00000000~11111111(0~127,-128~-1)
@@ -175,7 +175,7 @@ int main()
 	return 0;
 }
 #endif
-#if 0
+#if 1
 unsigned char i = 0;//取值范围0~255，超过255又回到0
 int main()
 {
