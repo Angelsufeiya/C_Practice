@@ -121,18 +121,50 @@
 //这个函数在遇到 '\0' 的时候并不会停下来。
 //如果source和destination有任何的重叠，复制的结果都是未定义的。
 
-struct {
-	char name[40];
-	int age;
-} person, person_copy;
+//struct {
+//	char name[40];
+//	int age;
+//} person, person_copy;
+//
+//int main() {
+//	char myname[] = "Pierre de Fermat";
+//	/* using memcpy to copy string: */
+//	memcpy(person.name, myname, strlen(myname) + 1);
+//	person.age = 46;
+//	/* using memcpy to copy structure: */
+//	memcpy(&person_copy, &person, sizeof(person));
+//	printf("person_copy: %s, %d \n", person_copy.name, person_copy.age);
+//	return 0;
+//}
 
-int main() {
-	char myname[] = "Pierre de Fermat";
-	/* using memcpy to copy string: */
-	memcpy(person.name, myname, strlen(myname) + 1);
-	person.age = 46;
-	/* using memcpy to copy structure: */
-	memcpy(&person_copy, &person, sizeof(person));
-	printf("person_copy: %s, %d \n", person_copy.name, person_copy.age);
-	return 0;
-}
+//void * memmove(void * destination, const void * source, size_t num);
+//和memcpy的差别就是memmove函数处理的源内存块和目标内存块是可以重叠的。
+//如果源空间和目标空间出现重叠，就得使用memmove函数处理。
+
+//int main() {
+//	char str[] = "memmove can be very useful......";
+//	memmove(str + 3, str + 5, 5);
+//	puts(str);
+//	return 0;
+//}
+
+//int memcmy(const void * ptr1, const void * ptr2, size_t num)
+//比较从ptr1和ptr2指针开始的num个字节
+
+//int main() {
+//	char buffer1[] = "DWgaOtP12df0";
+//	char buffer2[] = "DWGAOTP12DF0";
+//	int n;
+//	n = memcmp(buffer1, buffer2, sizeof(buffer1));
+//
+//	if (n > 0) {
+//		printf("'%s' is greater than '%s'.\n", buffer1, buffer2);
+//	}
+//	else if (n < 0) {
+//		printf("'%s' is less than '%s'.\n", buffer1, buffer2);
+//	}
+//	else {
+//		printf("'%s' is the same as '%s'.\n", buffer1, buffer2);
+//	}
+//	return 0;
+//}
