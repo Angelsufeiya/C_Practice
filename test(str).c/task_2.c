@@ -25,3 +25,11 @@ char *my_strstr(const char* str1, const char* str2)
 		cp++;
 	}
 }
+
+int main(){
+	char arr1[] = "abcdefg";
+	char arr2[20] = "ABCD";
+
+	printf("%s", my_strstr(arr2, arr1));
+	return 0;
+}
