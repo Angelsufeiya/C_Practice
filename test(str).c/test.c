@@ -66,7 +66,7 @@
 //	return 0;
 //}
 
-//char * strstr ( const char *, const char * );
+//char * strstr ( const char * str1, const char * str2);
 //Returns a pointer to the first occurrence of str2 in str1
 // or a null pointer if str2 is not part of str1.
 

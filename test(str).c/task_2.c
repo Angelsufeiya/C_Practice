@@ -5,16 +5,19 @@
 
 char *my_strstr(const char* str1, const char* str2)
 {
+	//¼ì²âstr1;str2ÊÇ·ñÎª¿ÕÖ¸Õë
 	assert(str1);
 	assert(str2);
+
 	char *cp = (char*)str1;
 	char *substr = (char *)str2;
 	char *s1 = NULL;
+
 	if (*str2 == '\0')
 		return NULL;
 	while (*cp) {
 		s1 = cp;
-		substr = str2;
+		substr = (char *)str2;
 		while (*s1 && *substr && (*s1 == *substr))
 		{
 			s1++;
@@ -24,12 +27,13 @@ char *my_strstr(const char* str1, const char* str2)
 			return cp;
 		cp++;
 	}
+	return NULL;
 }
 
-int main(){
-	char arr1[] = "abcdefg";
-	char arr2[20] = "ABCD";
+int main2(){
+	char arr1[] = "abcbcdef";
+	char arr2[20] = "bcde";
 
-	printf("%s", my_strstr(arr2, arr1));
+	printf("%s\n", my_strstr(arr1, arr2));
 	return 0;
 }
