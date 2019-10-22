@@ -33,7 +33,7 @@ struct S4
 	double d;
 };
 
-int main(){
+int main0(){
 	printf("S1 结构中的 c1 偏移 = %d 字节。\n", offsetof(struct S1, c1));//0
 	printf("S1 结构中的 i 偏移 = %d 字节。\n", offsetof(struct S1, i));//4
 	printf("S1 结构中的 c2 偏移 = %d 字节。\n", offsetof(struct S1, c2));//8
