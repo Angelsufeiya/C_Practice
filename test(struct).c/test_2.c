@@ -38,43 +38,44 @@
 //}
 
 //联合类型的声明 
-union Un
-{
-	char c;
-	int i; 
-};
-//联合变量的定义
-union Un un; //计算联合变量的大小 
-
-union data{
-	int a;
-	char b;
-	double c;
-};
-
-int main(){
-	printf("%d\n", sizeof(un));//4
-	printf("%d\n", sizeof(union data));
-	//下面输出的结果是什么? 
-	un.i = 0x11223344; 
-	un.c = 0x55; 
-	printf("%x\n", un.i);//11223355
-	printf("%x\n", un.c);
-	return 0;
-}
+//union Un
+//{
+//	char c;
+//	int i; 
+//};
+////联合变量的定义
+//union Un un; //计算联合变量的大小 
 //
-//int sys_check(){
-//	int a = 1;
-//	return *((char*)&a);
-//}
+//union data{
+//	int a;
+//	char b;
+//	double c;
+//};
 //
 //int main(){
-//	int n = sys_check();
-//	if (n == 1){
-//		printf("小端\n");
-//	}
-//	else{
-//		printf("大端\n");
-//	}
+//	printf("%d\n", sizeof(un));//4
+//	printf("%d\n", sizeof(union data));//8
+//	//下面输出的结果是什么? 
+//	un.i = 0x11223344; 
+//	un.c = 0x55; 
+//	printf("%x\n", un.i);//11223355（小端存储）
+//	printf("%x\n", un.c);//55
 //	return 0;
 //}
+
+//判断当前计算机的大小端存储
+int sys_check(){
+	int a = 1;
+	return *((char*)&a);
+}
+
+int main(){
+	int n = sys_check();
+	if (n == 1){
+		printf("小端\n");//(地位存储低地址)
+	}
+	else{
+		printf("大端\n");
+	}
+	return 0;
+}
