@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <assert.h>
 
-//monishixian memcpy
+//模拟实现 memcpy
 void * my_memcpy(void * dst, const void * src, size_t count)
 {
 	void * ret = dst;
+	//检测str1;str2是否为空指针
 	assert(dst);
 	assert(src);
 	
@@ -25,7 +25,6 @@ void * my_memmove(void * dst, const void * src, size_t count){
 
 	if (dst <= src || (char *)dst >= ((char *)src + count)) {
 		//（无重叠）copy from lower addresses to higher addresses
-
 		while (count--) {
 			*(char *)dst = *(char *)src;
 			dst = (char *)dst + 1;
