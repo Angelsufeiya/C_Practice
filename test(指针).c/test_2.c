@@ -1,7 +1,7 @@
 #if 0
 #include <stdio.h>
 #include <stdlib.h>
-//qosrt函数的使用者得实现一个比较函数
+//qsort函数的使用者得实现一个比较函数
 int int_cmp(const void * p1, const void * p2) {
 	return (*(int *)p1 - *(int *)p2);// > 只能返回两个值
 }
