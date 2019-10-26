@@ -94,5 +94,6 @@ int main()
 		usleep(100000);
 	}
 	printf("\n");
+	system("pause");
 	return 0;
 }
