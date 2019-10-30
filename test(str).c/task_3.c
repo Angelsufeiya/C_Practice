@@ -44,7 +44,7 @@ void * my_memmove(void * dst, const void * src, size_t count){
 	return ret;
 }
 
-int main(){
+int main3(){
 	char arr1[10] = "abcbcdef";
 	char arr2[10] = "bcde";
 

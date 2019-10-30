@@ -1,15 +1,31 @@
-#include <stdio.h>
-
-//1.Ä£ÄâÊµÏÖstrncpy 
-//¿½±´num¸ö×Ö·û´ÓÔ´×Ö·û´®µ½Ä¿±ê¿Õ¼ä¡£
-//Èç¹ûÔ´×Ö·û´®µÄ³¤¶ÈĞ¡ÓÚnum£¬Ôò¿½±´ÍêÔ´×Ö·û´®Ö®ºó£¬ÔÚÄ¿±êµÄºó±ß×·¼Ó0£¬Ö±µ½num¸ö¡£
+ï»¿#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
-//2.Ä£ÄâÊµÏÖstrncat
+//1.æ¨¡æ‹Ÿå®ç°strncpy 
+//æ‹·è´numä¸ªå­—ç¬¦ä»æºå­—ç¬¦ä¸²åˆ°ç›®æ ‡ç©ºé—´ã€‚
+//å¦‚æœæºå­—ç¬¦ä¸²çš„é•¿åº¦å°äºnumï¼Œåˆ™æ‹·è´å®Œæºå­—ç¬¦ä¸²ä¹‹åï¼Œåœ¨ç›®æ ‡çš„åè¾¹è¿½åŠ 0ï¼Œç›´åˆ°numä¸ªã€‚
+
+
+//2.æ¨¡æ‹Ÿå®ç°strncat
 //Appends the first num characters of source to destination, plus a terminating null-character.
 //If the length of the C string in source is less than num,
 //only the content up to the terminating null - character is copied.
 
 
-//3.Ä£ÄâÊµÏÖstrncmp
-//±È½Ïµ½³öÏÖÁí¸ö×Ö·û²»Ò»Ñù»òÕßÒ»¸ö×Ö·û´®½áÊø»òÕßnum¸ö×Ö·ûÈ«²¿±È½ÏÍê¡£
+//3.æ¨¡æ‹Ÿå®ç°strncmp
+//æ¯”è¾ƒåˆ°å‡ºç°å¦ä¸ªå­—ç¬¦ä¸ä¸€æ ·æˆ–è€…ä¸€ä¸ªå­—ç¬¦ä¸²ç»“æŸæˆ–è€…numä¸ªå­—ç¬¦å…¨éƒ¨æ¯”è¾ƒå®Œã€‚
+
+
+//int main()
+//{
+//	char a[5] = { 'A', 'B', 'C', 'D' };
+//	char(*p3)[10] = &a;
+//	char(*p4)[10] = a;
+//
+//	printf("%s\n", p3+1);
+//	printf("%s\n", p4 + 1);
+//
+//	return 0;
+//}

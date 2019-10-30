@@ -168,3 +168,25 @@
 //	}
 //	return 0;
 //}
+
+int a = 10;
+int b = 100;
+int *q;
+
+void func(int **p)
+{
+	printf("func:&p = %p, p= %d\n", &q, **p);
+	*p = &b;
+	printf("func:&p = %p, p= %d\n", &q, **p);
+}
+
+int main__(){
+	printf("&a = %p, &b = %p, &q = %p\n", &a, &b, &q);
+	q = &a;
+	printf("*q = %d, q = %p, &q = %p\n", *q, q, &q);
+	func(&q);
+	printf("*q = %d, q = %p, &q = %p\n", *q, q, &q);
+
+	system("pause");
+	return 0;
+}
