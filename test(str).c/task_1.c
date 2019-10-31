@@ -45,7 +45,7 @@ char * my_strcat(char * dest, const char * src){
 
 //Ä£ÄâÊµÏÖstrcmp
 
-char* my_strcmp(char * dest, const char * src){
+int my_strcmp(char * dest, const char * src){
 	int ret = 0;
 	assert(src != NULL);
 	assert(dest != NULL);
@@ -57,7 +57,7 @@ char* my_strcmp(char * dest, const char * src){
 		ret = -1;
 	else if (ret > 0)
 		ret = 1;
-	return (char *)ret;
+	return ret;
 }
 
 int main1(){
