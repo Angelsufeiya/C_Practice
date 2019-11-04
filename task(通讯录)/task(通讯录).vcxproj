@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="func.c" />
     <ClCompile Include="task.c" />
   </ItemGroup>
   <ItemGroup>
