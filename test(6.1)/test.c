@@ -96,6 +96,17 @@ void test() {
 		*(p + i) = i;//当i是10的时候越界访问 }
 		free(p);
 	}
+	void test() {
+		int a = 10;
+		int *p = &a;
+		free(p);//ok?
+	}
+	void test() {
+		int *p = (int *)malloc(100);
+		p++; free(p);//p不再指向动态内存的起始位置
+	}
+	//对同一块动态内存多次释放
+
 int main(){
 	test();
 	return 0;
