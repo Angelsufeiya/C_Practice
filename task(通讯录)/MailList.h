@@ -25,4 +25,5 @@ extern int g_count;
 
 void inputData();
 void outputData();
+void searchData();
 #endif /* _MailList_H */

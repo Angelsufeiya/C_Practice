@@ -48,6 +48,10 @@ void MailList(){
 		case Delete:
 			break;
 		case Search:
+			char str[256] = { 0 };
+			printf("请输入你要查找的联系人:\n");
+			scanf("%s", str);
+			searchData(str);
 			break;
 		case Change:
 			break;
@@ -55,6 +59,8 @@ void MailList(){
 			outputData();
 			break;
 		case Empty:
+			memset(g_AllMsg, 0, g_count * sizeof(struct MailList));
+			g_count = 0;
 			break;
 		case -1:
 			printf("输入有误，请重新输入\n");
@@ -62,7 +68,6 @@ void MailList(){
 		default:
 			break;
 		}
-
 	}
 }
 
