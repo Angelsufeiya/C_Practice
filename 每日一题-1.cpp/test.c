@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 
 //#define N 9 
@@ -40,8 +42,18 @@
 //	printf("* Total: %d\n", count);
 //}
 
-int main(){
-	int i = 3;
-	printf("%d %d", ++i, ++i);
+//int main(){
+//	int i = 3;
+//	printf("%d %d", ++i, ++i);
+//	return 0;
+//}
+
+int _main(){
+	char name[20] = "Mary";
+	FILE *out;
+	out = fopen("output.txt", "w");
+	if (out != NULL){
+		fprintf(out, "Hello %s\n", name);
+	}
 	return 0;
 }

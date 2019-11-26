@@ -70,6 +70,9 @@
     <ClCompile Include="day_14.cpp" />
     <ClCompile Include="day_15.cpp" />
     <ClCompile Include="day_16.cpp" />
+    <ClCompile Include="day_17.cpp" />
+    <ClCompile Include="day_18.cpp" />
+    <ClCompile Include="day_19.cpp" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
