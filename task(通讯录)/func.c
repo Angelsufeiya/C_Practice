@@ -36,6 +36,11 @@ void inputData(){
 
 void outputData(){
 	int i;
+	if (g_count == 0){
+		printf("没有数据\n");
+		return;
+	}
+
 	printf("  姓名    性别 年龄    电话      住址\n");
 	for (i = 0; i < g_count; i++){
 		printf("%-10s %3c %3d  %11s  %s\n", 
@@ -50,23 +55,50 @@ void outputData(){
 
 void searchData(char * find){
 	int i = 0;
+	int count = 0;
 	char age[4] = { 0 };
 	char *ret = NULL;
+	int flag = 1;
 	for (i = 0; i < g_count; i++){
 		do{
 			ret = strstr(g_AllMsg[i].name, find);
 			if (ret){
-				break;
+				break;//查找到名字相符合
 			}
+
 			ret = strstr(g_AllMsg[i].telnum, find);
 			if (ret){
+				break;//查找到电话相符合
+			}
+
+			//将年龄转为字符串
+			sprintf(age, "%d", g_AllMsg[i].age);//将 g_AllMsg[i].age 转为字符串存到 age 中
+			if (!strcmp(age, find)){//age == find 返回0
 				break;
 			}
-			sprintf(age, "%d", g_AllMsg[i].age);//将 g_AllMsg[i].age 转为字符串存到 age 中
+			
 			ret = strstr(g_AllMsg[i].addr, find);
 			if (ret){
-				break;
+				break;//查找到年龄相符合
 			}
-		} while (0)
+
+			flag = 0;
+		} while (0);
+
+		if (flag){
+			printf("%-10s %3c %3d  %11s  %s\n",
+				g_AllMsg[i].name,
+				g_AllMsg[i].gender,
+				g_AllMsg[i].age,
+				g_AllMsg[i].telnum,
+				g_AllMsg[i].addr);
+			count++;
+		}
+	}
+	if (count){
+		printf("共找到%d条数据\n", count);
+	}
+	else{
+		printf("没有符合条件的数据\n");
 	}
 }

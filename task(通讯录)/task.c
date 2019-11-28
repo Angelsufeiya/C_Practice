@@ -15,6 +15,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "MailList.h"//引用两次会出现重定义现象
 
 struct MailList g_AllMsg[1000];
@@ -29,8 +31,8 @@ int menu(){
 		"4.	 修改指定联系人信息\n"
 		"5.	 显示所有联系人信息\n"
 		"6.	 清空所有联系人\n"
-		"请输入你要进行操作:");
-	//复制成功，返回1；复制失败，返回0
+		"请输入你要进行操作:\n");
+	//赋值成功，返回1；赋值失败，返回0
 	ret = scanf("%d", &input);
 	//因为menu函数在while(1)中一旦输入A 死循环
 	//return input;
@@ -39,6 +41,7 @@ int menu(){
 
 void MailList(){
 	int op;
+	char str[256] = { 0 };
 	while (1){
 		op = menu();
 		switch (op){
@@ -48,8 +51,7 @@ void MailList(){
 		case Delete:
 			break;
 		case Search:
-			char str[256] = { 0 };
-			printf("请输入你要查找的联系人:\n");
+			printf("请输入你要检索的字符串:\n");//查找不一定非得是姓名（备注千奇百怪）
 			scanf("%s", str);
 			searchData(str);
 			break;
@@ -63,9 +65,11 @@ void MailList(){
 			g_count = 0;
 			break;
 		case -1:
+			getchar();
 			printf("输入有误，请重新输入\n");
 			break;
 		default:
+			printf("输入有误，请重新输入\n");
 			break;
 		}
 	}
