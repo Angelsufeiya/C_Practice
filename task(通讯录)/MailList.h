@@ -25,5 +25,8 @@ extern int g_count;
 
 void inputData();
 void outputData();
-void searchData();
+void searchData(char * find);
+void outputSearchdata(int * data);
+int catchOneData(char * find);
+void deleteOneData(int n);
 #endif /* _MailList_H */

@@ -40,8 +40,9 @@ int menu(){
 }
 
 void MailList(){
-	int op;
+	int op, ret;
 	char str[256] = { 0 };
+	int searchRes[1001] = { 0 };//留第一个空间存储查询的结果
 	while (1){
 		op = menu();
 		switch (op){
@@ -49,11 +50,28 @@ void MailList(){
 			inputData();
 			break;
 		case Delete:
+			printf("请输入你要删除的条目:\n");
+			memset(str, 0, sizeof(str));//使用str前先清空
+			scanf("%s", str);
+			ret = catchOneData(str);
+			if (ret > 0){
+				deleteOnedata(ret);
+				printf("删除成功\n");
+			}
+			else{
+				printf("删除失败\n");
+			}
 			break;
 		case Search:
 			printf("请输入你要检索的字符串:\n");//查找不一定非得是姓名（备注千奇百怪）
+			memset(str, 0, sizeof(str));//为了保险起见，再对str清空
+			memset(searchRes, 0, sizeof(searchRes));
 			scanf("%s", str);
-			searchData(str);
+			searchData(str, searchRes);
+			outputSearchdata(searchRes);
+			if (searchRes[0] > 0){
+				printf("共找到%d条数据\n", searchRes[0]);
+			}
 			break;
 		case Change:
 			break;

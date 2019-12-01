@@ -53,7 +53,7 @@ void outputData(){
 	}
 }
 
-void searchData(char * find){
+void searchData(char * find, int * searchres){
 	int i = 0;
 	int count = 0;
 	char age[4] = { 0 };
@@ -86,19 +86,57 @@ void searchData(char * find){
 		} while (0);
 
 		if (flag){
-			printf("%-10s %3c %3d  %11s  %s\n",
-				g_AllMsg[i].name,
-				g_AllMsg[i].gender,
-				g_AllMsg[i].age,
-				g_AllMsg[i].telnum,
-				g_AllMsg[i].addr);
-			count++;
+			searchres[0]++;
+			searchres[searchres[0]] = i;
 		}
 	}
-	if (count){
-		printf("共找到%d条数据\n", count);
+}
+
+void outputSearchdata(int * data){
+	int i;
+	if (data[0] == 0){
+		printf("没有搜索到数据\n");
+		return;
+	}
+
+	printf("     姓名    性别 年龄    电话      住址\n");
+	for (i = 1; i < data[0]; i++){
+		printf("%2d %-10s %3c %3d  %11s  %s\n", 
+			i,
+			g_AllMsg[data[i]].name,
+			g_AllMsg[data[i]].gender,
+			g_AllMsg[data[i]].age,
+			g_AllMsg[data[i]].telnum,
+			g_AllMsg[data[i]].addr);
+	}
+}
+
+void catchOneData(char * find){
+	int searchRes[1001] = { 0 };
+	searchData(find, searchRes);
+	if (searchRes[0] == 0){
+		return -1;//删除信息错误
+	}
+	else if (searchRes[0] == 1){
+		return searchRes[1];
 	}
 	else{
-		printf("没有符合条件的数据\n");
+		int i;
+		outputSearchdata(searchRes);
+		printf("请输入你要删除第几条数据:\n");
+		scanf("%d", &i);
+		if (i < 1 || i > searchRes[0]){
+			return -1;//删除信息错误
+		}
+		return searchRes[i];
 	}
+	return 0;
+}
+
+void deleteOneData(int n){
+	int i;
+	for (i = n; i < g_count; i++){
+		g_AllMsg[i] = g_AllMsg[i + 1];
+	}
+	g_count--;//没有删除最后一条数据
 }
