@@ -2,16 +2,17 @@
 #define _MailList_H
 //声明一般放在头文件里
 
+#define PERSPACE 100
+
 enum{
-	Add = 1,
-	Delete,
-	Search,
-	Change,
-	Display,
-	Empty,
+	ADD_MSG = 1,
+	DELETE_MSG,
+	SEARCH_MSG,
+	CHANGE_MSG,
+	DISPLAY_MSG,
+	EMPTY_MSG
 };
 
-//做一个全局的表
 struct MailList{
 	char name[50];
 	char gender;
@@ -20,13 +21,20 @@ struct MailList{
 	int age;
 };
 
-extern struct MailList g_AllMsg[1000];
-extern int g_count;
+typedef struct {
+	struct MailList * allMsg;
+	int count;
+	int limit;
+}MailLists;
 
-void inputData();
-void outputData();
-void searchData(char * find);
-void outputSearchdata(int * data);
-int catchOneData(char * find);
-void deleteOneData(int n);
+void inputData(struct MailList * oneData);
+void initMailList(MailLists * data);
+void destoryMailList(MailLists * data);
+void addMailList(MailLists * data, struct MailList oneData);
+void searchData(MailLists data, char * find, int * searchres);
+void deleteOneData(MailLists * data, int n);
+void outputData(MailLists data);
+void outputSearchData(MailLists data, int * outputdata);
+int catchOneData(MailLists data, char *find);
+
 #endif /* _MailList_H */

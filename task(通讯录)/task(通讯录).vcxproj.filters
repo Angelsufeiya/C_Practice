@@ -18,7 +18,7 @@
     <ClCompile Include="task.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="func.c">
+    <ClCompile Include="mailLists.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
