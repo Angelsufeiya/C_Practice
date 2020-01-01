@@ -1,10 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "MailList.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+//初始化所有数据
 void initMailList(MailLists * data)
 {
+	//每一次动态开辟存储100条数据的空间，并将其初始化为0
 	data->allMsg = (struct MailList *)calloc(PERSPACE, sizeof(struct MailList));
 	data->count = 0;
 	data->limit = PERSPACE;
@@ -21,11 +25,12 @@ void destoryMailList(MailLists * data)
 	data->limit = 0;
 }
 
+//输入数据
 void inputData(struct MailList * oneData)
 {
 	printf("请输入姓名：\n");
 	scanf("%49s", oneData->name);
-	getchar();
+	//getchar();
 	printf("请输入性别（f/m）：\n");
 	scanf("%c", &oneData->gender);
 	printf("请输入年龄：\n");
@@ -184,4 +189,21 @@ int catchOneData(MailLists data, char *find)
 		}
 		return schres[i];
 	}
+}
+
+int saveData(MailLists allData, const char* filename){
+	FILE * pf = fopen(filename, "wb");
+
+	fwrite(&allData.count, sizeof(int), allData.count, pf);
+	fwrite(&allData.allMsg, sizeof(struct MailList), allData.count, pf);
+
+	fclose(pf);
+}
+
+int loadData(MailLists * allData, const char* filename){
+	FILE * pf = fopen(filename, "r");
+	fread(&allData->count, sizeof(int), 1, pf);
+	fread(&allData->allMsg, sizeof(struct MailList), allData->count, pf);
+
+	fclose(pf);
 }

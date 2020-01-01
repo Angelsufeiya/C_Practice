@@ -1,17 +1,3 @@
-//实现一个通讯录； 
-//通讯录可以用来存储1000个人的信息，每个人的信息包括：
-//姓名、性别、年龄、电话、住址
-//
-//提供方法：
-//1. 添加联系人信息
-//2. 删除指定联系人信息
-//3. 查找指定联系人信息
-//4. 修改指定联系人信息
-//5. 显示所有联系人信息
-//6. 清空所有联系人
-//7. 以名字排序所有联系人
-//8. 保存联系人到文件
-//9. 加载联系人
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -29,6 +15,7 @@ int menu()
 		"4.	修改指定联系人信息\n"
 		"5.	显示所有联系人信息\n"
 		"6.	清空所有联系人\n"
+		"7.	保存通讯录\n"
 		"请输入选项：");
 	ret = scanf("%d", &tmp);
 	return ret ? tmp : -1;
@@ -36,8 +23,7 @@ int menu()
 
 void MailList()
 {
-	int op;
-	int ret;
+	int op, ret;
 	char str[256] = { 0 };
 	int searchRes[1001] = { 0 };
 	MailLists allData;
@@ -92,6 +78,7 @@ void MailList()
 			break;
 		case -1:
 			printf("输入有误，请重新输入\n");
+			getchar();
 			break;
 		default:
 			printf("输入有误，请重新输入\n");
@@ -100,8 +87,36 @@ void MailList()
 	destoryMailList(&allData);
 }
 
+void test(){
+	char str[256] = { 0 };
+	int searchRes[1001] = { 0 };
+	MailLists allData;
+	struct MailList tmp;
+
+	initMailList(&allData);
+	inputData(&tmp);
+	addMailList(&allData, tmp);
+	if (saveData(allData, FILENAME)){
+		printf("保存失败\n");
+	}
+
+	destoryMailList;
+}
+
+void test2(){
+	MailLists allData;
+	struct MailList tmp;
+	if (loadData(allData, FILENAME)){
+		printf("读取失败\n");
+	}
+
+	outputData(allData);
+	destoryMailList;
+}
+
 int main()
 {
-	MailList();
+	//MailList();
+	test();
 	return 0;
 }

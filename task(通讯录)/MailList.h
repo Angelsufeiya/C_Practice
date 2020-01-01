@@ -3,6 +3,7 @@
 //声明一般放在头文件里
 
 #define PERSPACE 100
+#define FILENAME "maillist.txt"
 
 enum{
 	ADD_MSG = 1,
@@ -10,19 +11,22 @@ enum{
 	SEARCH_MSG,
 	CHANGE_MSG,
 	DISPLAY_MSG,
-	EMPTY_MSG
+	EMPTY_MSG,
+	SAVE_FILE
 };
 
+//结构体 struct MailList 的声明
 struct MailList{
-	char name[50];
-	char gender;
-	char telnum[30];
-	char addr[200];
-	int age;
+	char name[50];	//名字
+	char gender;	//性别
+	char telnum[30];//电话
+	char addr[200];	//住址
+	int age;		//年龄
 };
 
-typedef struct {
-	struct MailList * allMsg;
+//声明结构体MailLists
+typedef struct{
+	struct MailList * allMsg;//声明结构体变量 allMsg
 	int count;
 	int limit;
 }MailLists;
