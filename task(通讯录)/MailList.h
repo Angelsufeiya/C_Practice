@@ -26,15 +26,15 @@ struct MailList{
 
 //声明结构体MailLists
 typedef struct{
-	struct MailList * allMsg;//声明结构体变量 allMsg
+	struct MailList * allMsg;//声明结构体指针变量 allMsg
 	int count;
 	int limit;
 }MailLists;
 
-void inputData(struct MailList * oneData);
 void initMailList(MailLists * data);
-void destoryMailList(MailLists * data);
+void inputData(struct MailList * oneData);
 void addMailList(MailLists * data, struct MailList oneData);
+void destoryMailList(MailLists * data);
 void searchData(MailLists data, char * find, int * searchres);
 void deleteOneData(MailLists * data, int n);
 void outputData(MailLists data);

@@ -14,23 +14,12 @@ void initMailList(MailLists * data)
 	data->limit = PERSPACE;
 }
 
-void destoryMailList(MailLists * data)
-{
-	if (data->allMsg)
-	{
-		free(data->allMsg);
-	}
-	data->allMsg = NULL;
-	data->count = 0;
-	data->limit = 0;
-}
-
 //输入数据
 void inputData(struct MailList * oneData)
 {
 	printf("请输入姓名：\n");
 	scanf("%49s", oneData->name);
-	//getchar();
+	getchar();//吞掉回车键
 	printf("请输入性别（f/m）：\n");
 	scanf("%c", &oneData->gender);
 	printf("请输入年龄：\n");
@@ -41,18 +30,21 @@ void inputData(struct MailList * oneData)
 	scanf("%199s", oneData->addr);
 }
 
+//将每条信息存储到通讯录中
 void addMailList(MailLists * data, struct MailList oneData)
 {
 	int i;
 
 	if (data->count == data->limit)
 	{
+		//如果动态开辟的内存空间已经存满（信息存储100条），则继续动态开辟
 		data->limit += PERSPACE;
 		data->allMsg = (struct MailList *)realloc(data->allMsg, data->limit * sizeof(struct MailList));
 	}
 
 	for (i = 0; i < data->count; i++)
 	{
+		//按照名字进行排序
 		if (strcmp(data->allMsg[i].name, oneData.name) > 0)
 		{
 			break;
@@ -61,17 +53,30 @@ void addMailList(MailLists * data, struct MailList oneData)
 	int j;
 	for (j = data->count; j > i; j--)
 	{
-		data->allMsg[j] = data->allMsg[j - 1];
+		data->allMsg[j] = data->allMsg[j - 1];//将名字字母大于他的，排到他的后面
 	}
 	data->allMsg[i] = oneData;
 
 	data->count++;
 }
 
+//删除通讯录
+void destoryMailList(MailLists * data)
+{
+	if (data->allMsg)//allMsg开辟成功不返回NULL，条件为真
+	{
+		free(data->allMsg);//释放动态开辟的内存空间
+	}
+	data->allMsg = NULL;//释放完，让其等于NULL
+	data->count = 0;
+	data->limit = 0;
+}
+
+//寻找信息
 void searchData(MailLists data, char * find, int * searchres)
 {
 	int i, flag;
-	char age[4] = { 0 };
+	char age[4] = { 0 };//用来记录年龄的变量
 	char * ret;
 	for (i = 0; i < data.count; i++)
 	{
@@ -89,7 +94,7 @@ void searchData(MailLists data, char * find, int * searchres)
 				break;
 			}
 
-			sprintf(age, "%d", data.allMsg[i].age);
+			sprintf(age, "%d", data.allMsg[i].age);//将输入的数据以10进制格式存储在age中
 			if (!strcmp(age, find))
 			{
 				break;
@@ -104,6 +109,7 @@ void searchData(MailLists data, char * find, int * searchres)
 			flag = 0;
 		} while (0);
 
+		//如果没有找到flag == 0
 		if (flag)
 		{
 			searchres[0]++;
@@ -165,9 +171,10 @@ void outputSearchData(MailLists data, int * outputdata)
 	}
 }
 
+//得到一条通讯录信息
 int catchOneData(MailLists data, char *find)
 {
-	int schres[1001] = { 0 };
+	int schres[1001] = { 0 };//用来记录是哪一条信息被搜寻到
 	searchData(data, find, schres);
 	if (schres[0] == 0)
 	{
@@ -191,19 +198,19 @@ int catchOneData(MailLists data, char *find)
 	}
 }
 
-int saveData(MailLists allData, const char* filename){
-	FILE * pf = fopen(filename, "wb");
-
-	fwrite(&allData.count, sizeof(int), allData.count, pf);
-	fwrite(&allData.allMsg, sizeof(struct MailList), allData.count, pf);
-
-	fclose(pf);
-}
-
-int loadData(MailLists * allData, const char* filename){
-	FILE * pf = fopen(filename, "r");
-	fread(&allData->count, sizeof(int), 1, pf);
-	fread(&allData->allMsg, sizeof(struct MailList), allData->count, pf);
-
-	fclose(pf);
-}
+//int saveData(MailLists allData, const char* filename){
+//	FILE * pf = fopen(filename, "wb");
+//
+//	fwrite(&allData.count, sizeof(int), allData.count, pf);
+//	fwrite(&allData.allMsg, sizeof(struct MailList), allData.count, pf);
+//
+//	fclose(pf);
+//}
+//
+//int loadData(MailLists * allData, const char* filename){
+//	FILE * pf = fopen(filename, "r");
+//	fread(&allData->count, sizeof(int), 1, pf);
+//	fread(&allData->allMsg, sizeof(struct MailList), allData->count, pf);
+//
+//	fclose(pf);
+//}

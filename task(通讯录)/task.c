@@ -17,17 +17,17 @@ int menu()
 		"6.	清空所有联系人\n"
 		"7.	保存通讯录\n"
 		"请输入选项：");
-	ret = scanf("%d", &tmp);
+	ret = scanf("%d", &tmp);//防止输入错误（如果输入成功scanf返回1，否则返回0）
 	return ret ? tmp : -1;
 }
 
 void MailList()
 {
 	int op, ret;
-	char str[256] = { 0 };
-	int searchRes[1001] = { 0 };
-	MailLists allData;
-	struct MailList tmp;
+	char str[256] = { 0 };//用来搜索字符串（256只是一个上限，不会搜255个字符）
+	int searchRes[1001] = { 0 };//为了存储1000条数据
+	MailLists allData;	//创建通讯录的名称
+	struct MailList tmp;//创建储存每条信息的变量
 
 	initMailList(&allData);
 	while (1)
@@ -45,7 +45,7 @@ void MailList()
 			break;
 		case DELETE_MSG:
 			printf("请输入你要删除的条目：\n");
-			memset(str, 0, sizeof(str));
+			memset(str, 0, sizeof(str));//每次调用str前，先将str置0
 			scanf("%s", str);
 			ret = catchOneData(allData, str);
 			if (ret >= 0)
@@ -87,36 +87,36 @@ void MailList()
 	destoryMailList(&allData);
 }
 
-void test(){
-	char str[256] = { 0 };
-	int searchRes[1001] = { 0 };
-	MailLists allData;
-	struct MailList tmp;
-
-	initMailList(&allData);
-	inputData(&tmp);
-	addMailList(&allData, tmp);
-	if (saveData(allData, FILENAME)){
-		printf("保存失败\n");
-	}
-
-	destoryMailList;
-}
-
-void test2(){
-	MailLists allData;
-	struct MailList tmp;
-	if (loadData(allData, FILENAME)){
-		printf("读取失败\n");
-	}
-
-	outputData(allData);
-	destoryMailList;
-}
+//void test(){
+//	char str[256] = { 0 };
+//	int searchRes[1001] = { 0 };
+//	MailLists allData;
+//	struct MailList tmp;
+//
+//	initMailList(&allData);
+//	inputData(&tmp);
+//	addMailList(&allData, tmp);
+//	if (saveData(allData, FILENAME)){
+//		printf("保存失败\n");
+//	}
+//
+//	destoryMailList;
+//}
+//
+//void test2(){
+//	MailLists allData;
+//	struct MailList tmp;
+//	if (loadData(allData, FILENAME)){
+//		printf("读取失败\n");
+//	}
+//
+//	outputData(allData);
+//	destoryMailList;
+//}
 
 int main()
 {
-	//MailList();
-	test();
+	MailList();
+	//test();
 	return 0;
 }
