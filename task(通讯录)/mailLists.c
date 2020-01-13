@@ -109,15 +109,16 @@ void searchData(MailLists data, char * find, int * searchres)
 			flag = 0;
 		} while (0);
 
-		//如果没有找到flag == 0
+		//如果没有找到flag == 0；找到则查找有无其他信息
 		if (flag)
 		{
-			searchres[0]++;
+			searchres[0]++;//0++
 			searchres[searchres[0]] = i;
 		}
 	}
 }
 
+//删除一条信息
 void deleteOneData(MailLists * data, int n)
 {
 	int i;
@@ -128,6 +129,7 @@ void deleteOneData(MailLists * data, int n)
 	data->count--;
 }
 
+//输出数据
 void outputData(MailLists data)
 {
 	int i;
@@ -149,6 +151,7 @@ void outputData(MailLists data)
 	}
 }
 
+//输出搜寻出来的数据
 void outputSearchData(MailLists data, int * outputdata)
 {
 	int i;
@@ -198,19 +201,37 @@ int catchOneData(MailLists data, char *find)
 	}
 }
 
-//int saveData(MailLists allData, const char* filename){
-//	FILE * pf = fopen(filename, "wb");
-//
-//	fwrite(&allData.count, sizeof(int), allData.count, pf);
-//	fwrite(&allData.allMsg, sizeof(struct MailList), allData.count, pf);
-//
-//	fclose(pf);
-//}
-//
-//int loadData(MailLists * allData, const char* filename){
-//	FILE * pf = fopen(filename, "r");
-//	fread(&allData->count, sizeof(int), 1, pf);
-//	fread(&allData->allMsg, sizeof(struct MailList), allData->count, pf);
-//
-//	fclose(pf);
-//}
+int saveData(MailLists allData, const char * filename)
+{
+	FILE * pf = fopen(filename, "wb");
+	if (pf == NULL)
+	{
+		return 1;
+	}
+
+	fwrite(&allData.count, sizeof(int), 1, pf);
+	fwrite(allData.allMsg, sizeof(struct MailList), allData.count, pf);
+
+	fclose(pf);
+	return 0;
+}
+
+int loadData(MailLists * allData, const char * filename)
+{
+	FILE * pf = fopen(filename, "rb");
+	if (pf == NULL)
+	{
+		return 1;
+	}
+
+	fread(&allData->count, sizeof(int), 1, pf);
+	if (allData->count > PERSPACE)
+	{
+		allData->limit = (allData->count / PERSPACE + 1) * PERSPACE;
+		allData->allMsg = (struct MailList *)realloc(allData->allMsg, allData->limit * sizeof(struct MailList));
+	}
+	fread(allData->allMsg, sizeof(struct MailList), allData->count, pf);
+
+	fclose(pf);
+	return 0;
+}

@@ -30,6 +30,10 @@ void MailList()
 	struct MailList tmp;//创建储存每条信息的变量
 
 	initMailList(&allData);
+	if (loadData(&allData, FILENAME))
+	{
+		printf("读取失败\n");
+	}
 	while (1)
 	{
 		op = menu();
@@ -60,8 +64,8 @@ void MailList()
 			break;
 		case SEARCH_MSG:
 			printf("请输入你要检索的字符串：\n");
-			memset(str, 0, sizeof(str));
-			memset(searchRes, 0, sizeof(searchRes));
+			memset(str, 0, sizeof(str));//每次调用str前，先将str置0
+			memset(searchRes, 0, sizeof(searchRes));//每次调用searchRes前，先将searchRes置0
 			scanf("%s", str);
 			searchData(allData, str, searchRes);
 			outputSearchData(allData, searchRes);

@@ -32,6 +32,7 @@ typedef struct{
 }MailLists;
 
 void initMailList(MailLists * data);
+
 void inputData(struct MailList * oneData);
 void addMailList(MailLists * data, struct MailList oneData);
 void destoryMailList(MailLists * data);
@@ -41,4 +42,6 @@ void outputData(MailLists data);
 void outputSearchData(MailLists data, int * outputdata);
 int catchOneData(MailLists data, char *find);
 
+int saveData(MailLists allData, const char * filename);
+int loadData(MailLists * allData, const char * filename);
 #endif /* _MailList_H */
