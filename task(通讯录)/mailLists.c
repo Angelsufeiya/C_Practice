@@ -201,21 +201,23 @@ int catchOneData(MailLists data, char *find)
 	}
 }
 
+//保存数据
 int saveData(MailLists allData, const char * filename)
 {
 	FILE * pf = fopen(filename, "wb");
-	if (pf == NULL)
+	if (pf == NULL)//文件打开失败
 	{
 		return 1;
 	}
 
-	fwrite(&allData.count, sizeof(int), 1, pf);
-	fwrite(allData.allMsg, sizeof(struct MailList), allData.count, pf);
+	fwrite(&allData.count, sizeof(int), 1, pf);//将通讯录信息的数量写入
+	fwrite(allData.allMsg, sizeof(struct MailList), allData.count, pf);//将通讯录信息写入
 
 	fclose(pf);
 	return 0;
 }
 
+//读取数据
 int loadData(MailLists * allData, const char * filename)
 {
 	FILE * pf = fopen(filename, "rb");
@@ -224,13 +226,17 @@ int loadData(MailLists * allData, const char * filename)
 		return 1;
 	}
 
-	fread(&allData->count, sizeof(int), 1, pf);
+	fread(&allData->count, sizeof(int), 1, pf);//先读入通讯录的数量
 	if (allData->count > PERSPACE)
 	{
 		allData->limit = (allData->count / PERSPACE + 1) * PERSPACE;
 		allData->allMsg = (struct MailList *)realloc(allData->allMsg, allData->limit * sizeof(struct MailList));
 	}
-	fread(allData->allMsg, sizeof(struct MailList), allData->count, pf);
+	else
+	{
+		allData->limit = PERSPACE;
+	}
+	fread(allData->allMsg, sizeof(struct MailList), allData->count, pf);//将通讯录信息读入
 
 	fclose(pf);
 	return 0;

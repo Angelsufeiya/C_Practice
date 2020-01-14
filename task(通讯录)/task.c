@@ -80,6 +80,15 @@ void MailList()
 			destoryMailList(&allData);
 			initMailList(&allData);
 			break;
+		case SAVE_FILE:
+			if (saveData(allData, FILENAME))
+			{
+				printf("保存失败\n");
+			}
+			else
+			{
+				printf("保存成功\n");
+			}
 		case -1:
 			printf("输入有误，请重新输入\n");
 			getchar();
@@ -118,8 +127,7 @@ void MailList()
 //	destoryMailList;
 //}
 
-int main()
-{
+int main(){
 	MailList();
 	//test();
 	return 0;
