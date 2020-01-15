@@ -72,6 +72,17 @@ void MailList()
 			printf("共找到%d条数据\n", searchRes[0]);
 			break;
 		case CHANGE_MSG:
+			printf("请输入你要检索的字符串：\n");
+			memset(str, 0, sizeof(str));
+			memset(searchRes, 0, sizeof(searchRes));
+			scanf("%s", str);
+			searchData(allData, str, searchRes);
+			outputSearchData(allData, searchRes);
+			printf("请输入你要修改联系人信息的序号\n");
+			scanf("%d", &ret);
+			deleteOneData(&allData, ret - 1);
+			inputData(&tmp);
+			addMailList(&allData, tmp);
 			break;
 		case DISPLAY_MSG:
 			outputData(allData);
@@ -89,6 +100,7 @@ void MailList()
 			{
 				printf("保存成功\n");
 			}
+			break;
 		case -1:
 			printf("输入有误，请重新输入\n");
 			getchar();
