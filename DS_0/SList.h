@@ -43,5 +43,6 @@ void SListEraseAfter(SListNode* pos);
 void SListRemove(SList* plist, SLTDataType x);
 void SListPrint(SList* plist);
 void TestSList();
+void SListReverse(SList * plist);
 
 #endif//_SLIST_H_

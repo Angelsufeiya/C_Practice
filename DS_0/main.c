@@ -24,6 +24,9 @@ void listtest(){
 	SListInsertFront(&test, 6, 8);
 	SListPrint(&test);
 
+	SListReverse(&test);
+	SListPrint(&test);
+
 	SListDestory(&test);
 }
 
