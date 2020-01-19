@@ -19,6 +19,7 @@ for(cur = head->next; cur != head; cur =cur->next){
 
 typedef int SLTDataType;
 
+//定义一个结构体
 typedef struct SListNode
 {
 	SLTDataType _data;
