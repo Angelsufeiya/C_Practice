@@ -7,6 +7,26 @@
 #define COL 3
 
 int main(){
+	int num, i;
+	int num1 = 0, num2 = 1;
+	scanf("%d", &i);
+	if (i == 0)
+		printf("0\n");
+	else if (i == 1)
+		printf("1\n");
+	else
+	{
+		for (; i >= 2; i--){
+			num = num1 + num2;
+			num2 = num1;
+			num1 = num;
+		}
+		printf("%d", num);
+	}
+	return 0;
+}
+
+int main_1(){
 	int i, j, input;
 	int arr[ROW][COL] = { 0 };
 
