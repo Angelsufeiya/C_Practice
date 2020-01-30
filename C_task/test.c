@@ -6,6 +6,15 @@
 #define ROW 3
 #define COL 3
 
+int OneCount(unsigned int n){
+	int count = 0;
+	while (n){
+		if (n & 1)
+			count++;
+		n >> 1;
+	}
+}
+
 int main(){
 	int num, i;
 	int num1 = 0, num2 = 1;
