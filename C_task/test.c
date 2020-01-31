@@ -11,11 +11,22 @@ int OneCount(unsigned int n){
 	while (n){
 		if (n & 1)
 			count++;
-		n >> 1;
+		n = n >> 1;
 	}
+	return count;
 }
 
 int main(){
+	unsigned int input;
+
+	printf("请输入一个数：");
+	scanf("%d", &input);
+	printf("这个数中1的个数为：%d个", OneCount(input));
+	system("pause");
+	return 0;
+}
+
+int main_2(){
 	int num, i;
 	int num1 = 0, num2 = 1;
 	scanf("%d", &i);
