@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int main_4()
+{
+	int i = 1;
+	printf("%d,%d\n", i--, i++);
+	//int i = 1;
+	//printf("%d,%d\n", ++i, ++i);    //3,3
+	//printf("%d,%d\n", ++i, i++);    //5,3
+	//printf("%d,%d\n", i++, i++);    //6,5
+	//printf("%d,%d\n", i++, ++i);    //8,9
+	system("pause");
+	return 0;
+}
+
 #define ROW 3
 #define COL 3
 
@@ -16,7 +29,7 @@ int OneCount(unsigned int n){
 	return count;
 }
 
-int main(){
+int main_3(){
 	unsigned int input;
 
 	printf("请输入一个数：");
