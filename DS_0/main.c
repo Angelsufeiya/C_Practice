@@ -26,8 +26,7 @@ void listtest(){
 	SListReverse(&test);
 	SListPrint(&test);
 
-	SListKtfTotail(&test, 1);
-	SListPrint(&test);
+	printf("倒数第%d的节点数值为%d\n", 1, SListKtfTotail(&test, 1)->_data);
 
 	SListDestory(&test);
 }
