@@ -22,10 +22,11 @@ typedef int SLTDataType;
 //定义一个结构体
 typedef struct SListNode
 {
-	SLTDataType _data;
+	SLTDataType _data;// _ 作用是与一般变量进行区分
 	struct SListNode* _next;//只能引用自身的指针类型
 }SListNode;
 
+//定义链表本体（用SList定义一个链表，head为一个节点）
 typedef struct SList
 {
 	SListNode* _head;
@@ -33,17 +34,16 @@ typedef struct SList
 
 void SListInit(SList* plist);
 void SListDestory(SList* plist);
-SListNode* BuySListNode(SLTDataType x);
+
+
 void SListPushFront(SList* plist, SLTDataType x);
 void SListPopFront(SList* plist);
-
 SListNode* SListFind(SList* plist, SLTDataType x);
 void SListInsertFront(SList* plist, SLTDataType x, SLTDataType src);
 void SListInsertAfter(SListNode* pos, SLTDataType x); 
 void SListEraseAfter(SListNode* pos);
-void SListRemove(SList* plist, SLTDataType x);
 void SListPrint(SList* plist);
-void TestSList();
 void SListReverse(SList * plist);
+SListNode* SListKtfTotail(SList* plist, unsigned int k);
 
 #endif//_SLIST_H_

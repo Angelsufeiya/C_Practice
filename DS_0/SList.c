@@ -70,7 +70,7 @@ void SListInsertAfter(SListNode* pos, SLTDataType x){
 
 }
 
-//在cur的前面插入
+//在x的前面插入
 void SListInsertFront(SList* plist, SLTDataType x, SLTDataType src)
 {
 	assert(plist);
@@ -124,10 +124,35 @@ void SListReverse(SList * plist){
 	cur->_next = NULL; //断链，将头结点和他的next断开，有tmp记录，所以能找到
 	while (tmp) //每次循环都要完成断链，然后和旧头重新成链的过程，当旧链结束(tmp为空)跳出循环
 	{
-		plist->_head = tmp; //换新头，tmp位置会成为新的头，旧头成了它的第一个节点
+		plist->_head = tmp; //换新头，tmp位置会成为旧链的新头.旧头成了它的第一个节点
 		tmp = tmp->_next; //记录下次循环中tmp 的位置，因为tmp在这次循环中已经用完了，而且后面马上就要断链，所以必须在这里记录
 		plist->_head->_next = cur; //断链，与旧头形成新链
 		cur = plist->_head; //记录旧头的位置，方便下次循环成链
 	}
 #endif
+}
+
+SListNode* SListKtfTotail(SList* plist, unsigned int k){
+	//刚开始的时候，都指向起点，然后p1走k-1步后，p2和p1同时开始走，
+	//当p1走到最后一个的时候，p2指向的就是最后一个节点
+	SListNode* p1 = plist->_head;
+	SListNode* p2 = plist->_head;
+
+	if (plist->_head == NULL && k == 0)
+		return NULL;
+	while (k - 1 > 0){
+		if (p1->_next != NULL){
+			p1 = p1->_next;
+			--k;
+		}
+		else{
+			printf("error");
+			return NULL;
+		}
+	}
+	while (p1->_next != NULL){
+		p1 = p1->_next;
+		p2 = p2->_next;
+	}
+	return p2;
 }

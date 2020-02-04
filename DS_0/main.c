@@ -9,7 +9,6 @@ void listtest(){
 	SListPushFront(&test, 4);
 	SListPushFront(&test, 6);
 	SListPushFront(&test, 9);
-
 	SListPrint(&test);
 
 	SListPopFront(&test);
@@ -25,6 +24,9 @@ void listtest(){
 	SListPrint(&test);
 
 	SListReverse(&test);
+	SListPrint(&test);
+
+	SListKtfTotail(&test, 1);
 	SListPrint(&test);
 
 	SListDestory(&test);
