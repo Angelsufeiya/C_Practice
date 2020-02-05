@@ -28,6 +28,30 @@ void listtest(){
 
 	printf("倒数第%d的节点数值为%d\n", 1, SListKtfTotail(&test, 1)->_data);
 
+	test._head->_next->_next->_next->_next->_next = test._head->_next;
+	printf("%d\n", SListDetectCycle(&test)->_data);
+	SListPrint(&test);
+	/*
+	SList test2;
+	SListInit(&test2);
+	SListPushFront(&test2, 2);
+	SListPushFront(&test2, 3);
+	SListPushFront(&test2, 5);
+	test2._head->_next->_next->_next = test._head->_next;
+	SListNode * tmp = getIntersectionNode(&test, &test2);
+	if (tmp)
+	{
+	SListPrint(&test);
+	SListPrint(&test2);
+	printf("相遇节点的值为%d\n", tmp->_data);
+	}
+	else
+	{
+	printf("没有相交\n");
+	}
+	SListDestory(&test2);
+	*/
+
 	SListDestory(&test);
 }
 

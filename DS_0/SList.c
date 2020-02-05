@@ -118,6 +118,17 @@ void SListReverse(SList * plist){
 		plist->_head = tmp;
 		tmp = cur->_next;
 	}
+#elif 0
+	//创建一条新链，遍历旧链，不断对新链做头插，销毁旧链，将旧链的头挂到新链的头上
+	SList * reve = (SList *)malloc(sizeof(SList));
+	SListInit(reve);
+	SListNode* cur;
+	for (cur = plist->_head; cur; cur = cur->_next)
+	{
+		SListPushFront(reve, cur->_data);
+	}
+	SListDestory(plist);
+	plist->_head = reve->_head;
 #else
 	SListNode * tmp = plist->_head->_next; //记录next
 	SListNode * cur = plist->_head;
@@ -155,4 +166,106 @@ SListNode* SListKtfTotail(SList* plist, unsigned int k){
 		p2 = p2->_next;
 	}
 	return p2;
+}
+
+//得到两条链的交叉点
+SListNode * getIntersectionNode(SList* listA, SList* listB)
+{
+	int lenA = 0;
+	int lenB = 0;
+	SListNode *cur;
+	SListNode *headlong = listA->_head;
+	SListNode *headshort = listB->_head;
+	int gap;
+	int i;
+
+	for (cur = listA->_head; cur; cur = cur->_next)
+	{
+		lenA++;
+	}
+
+	for (cur = listB->_head; cur; cur = cur->_next)
+	{
+		lenB++;
+	}
+	gap = lenA - lenB;
+	if (gap < 0)
+	{
+		gap *= -1;
+		headshort = listA->_head;
+		headlong = listB->_head;
+	}
+
+	for (i = 0; i < gap; i++)
+	{
+		headlong = headlong->_next;
+	}
+
+	for (; headlong; headlong = headlong->_next, headshort = headshort->_next)
+	{
+		if (headlong == headshort)
+		{
+			return headlong;
+		}
+	}
+	return NULL;
+}
+
+//判断链表是否有循环（有返回1；没有返回0）
+int SListHasCycle(SList* plist)
+{
+	//设置两个节点
+	SListNode *fast = plist->_head;
+	SListNode *slow = plist->_head;
+
+	//快节点一次走两步，慢节点一次走一步，如果相遇则表明链表有循环
+	while (slow && fast && fast->_next)
+	{
+		slow = slow->_next;
+		fast = fast->_next->_next;
+		if (slow == fast)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+//得到链表循环圈内快慢节点相遇的节点
+SListNode* SListGetCycleNode(SList* plist)
+{
+	SListNode *fast = plist->_head;
+	SListNode *slow = plist->_head;
+
+	while (slow && fast && fast->_next)
+	{
+		slow = slow->_next;
+		fast = fast->_next->_next;
+		if (slow == fast)
+		{
+			return fast;
+		}
+	}
+	return NULL;
+}
+
+//得到链表循环的第一个节点
+SListNode * SListDetectCycle(SList* plist)
+{
+	SListNode *tmp = SListGetCycleNode(plist);
+
+	if (NULL == tmp)
+	{
+		return NULL;
+	}
+
+	SListNode * cur = plist->_head;
+	for (; cur; cur = cur->_next, tmp = tmp->_next)
+	{
+		if (cur == tmp)
+		{
+			return cur;
+		}
+	}
+	return NULL;
 }

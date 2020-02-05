@@ -46,4 +46,11 @@ void SListPrint(SList* plist);
 void SListReverse(SList * plist);
 SListNode* SListKtfTotail(SList* plist, unsigned int k);
 
+void TestSList();
+
+SListNode * getIntersectionNode(SList* listA, SList* listB);
+//void SListInsertFront(SList* plist, SLTDataType x);
+int SListHasCycle(SList* plist);
+SListNode * SListDetectCycle(SList* plist);
+
 #endif//_SLIST_H_
