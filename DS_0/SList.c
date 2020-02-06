@@ -1,9 +1,12 @@
 #include "SList.h"
 
+//链表初始化
 void SListInit(SList* plist){
 	assert(plist);
 	plist->_head = NULL;
 }
+
+//链表销毁
 void SListDestory(SList* plist){
 	SListNode * tmp;
 	while (plist->_head){
