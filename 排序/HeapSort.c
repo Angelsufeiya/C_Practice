@@ -1,18 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-/*
-arr[start+1...end]满足最大堆的定义，
-将arr[start]加入到最大堆arr[start+1...end]中，
-调整arr[start]的位置，使arr[start...end]也成为最大堆
-注：由于数组从0开始计算序号，也就是二叉堆的根节点序号为0，
-因此序号为i的左右子节点的序号分别为2i+1和2i+2
-*/
+//注：由于数组从0开始计算序号，也就是二叉堆的根节点序号为0，
+//因此序号为i的左右子节点的序号分别为2i+1和2i+2
 
+//构建大顶堆
 void HeapAdjustDown(int *arr, int start, int end)
 {
 
-	int temp = arr[start];	//保存当前节点
+	int temp = arr[start];		//保存当前节点
 	int i = 2 * start + 1;		//该节点的左孩子在数组中的位置序号
 	while (i <= end)
 	{
@@ -27,30 +23,26 @@ void HeapAdjustDown(int *arr, int start, int end)
 		start = i;
 		i = 2 * start + 1;
 	}
+	//如果子节点向上移动，将被替换掉的父节点重新被赋值
 	arr[start] = temp;
 }
 
-/*
-堆排序后的顺序为从小到大
-因此需要建立最大堆
-*/
-void Heap_Sort(int *arr, int len)
+//堆排序后的顺序为从小到大,因此需要建立最大堆
+void HeapSort(int *arr, int len)
 {
 	int i;
-	//把数组建成为最大堆
+
 	//第一个非叶子节点的位置序号为len/2-1
 	for (i = len / 2 - 1; i >= 0; i--)
 		HeapAdjustDown(arr, i, len - 1);
-	//进行堆排序
 	for (i = len - 1; i>0; i--)
 	{
-		//堆顶元素和最后一个元素交换位置，
-		//这样最后的一个位置保存的是最大的数，
-		//每次循环依次将次大的数值在放进其前面一个位置，
-		//这样得到的顺序就是从小到大
+		//堆顶元素和最后一个元素交换位置，这样最后的一个位置保存的是最大的数，
+		//每次循环依次将次大的数值在放进其前面一个位置，这样得到的顺序就是从小到大
 		int temp = arr[i];
 		arr[i] = arr[0];
 		arr[0] = temp;
+
 		//将arr[0...i-1]重新调整为最大堆
 		HeapAdjustDown(arr, 0, i - 1);
 	}
@@ -70,7 +62,7 @@ int main()
 	//for (i = 0; i<num; i++)
 	//	scanf("%d", arr + i);
 
-	Heap_Sort(arr, num);
+	HeapSort(arr, num);
 	printf("堆排序后的顺序：");
 	for (i = 0; i<num; i++)
 		printf("%d ", arr[i]);
