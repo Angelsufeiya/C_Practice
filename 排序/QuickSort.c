@@ -30,6 +30,51 @@ void quicksort(int * a, int left, int right) {
 	quicksort(a, i + 1, right);//继续处理右边的 ，这里是一个递归的过程
 }
 
+void quicksort2(int * a, int left, int right){
+	if (left > right)
+		return;
+	int key = a[left];
+	int begin = left;
+	int end = right;
+	while (begin<end){
+		while (a[end]>key && begin<end){
+			end--;
+		}
+		a[begin] = a[end];
+		while (a[begin]<key && begin<end){
+			begin++;
+		}
+		a[end] = a[begin];
+	}
+	a[end] = key;
+	quicksort2(a, left, end - 1);//继续处理左边的，这里是一个递归的过程
+	quicksort2(a, end + 1, right);//继续处理右边的 ，这里是一个递归的过程
+}
+
+void Swap(int* num1, int* num2)
+{
+	int temp = *num1;
+	*num1 = *num2;
+	*num2 = temp;
+}
+
+void quicksort3(int * a, int left, int right){
+	if (left > right)
+		return;
+	int key = a[left];
+	int cur = left + 1;
+	int prev = left;
+	while (cur <= right){
+		if (a[cur]<key && ++prev != cur){
+			Swap(&a[cur], &a[prev]);
+		}
+		++cur;
+	}
+	Swap(&a[prev], &a[left]);//交换数据时，传的是实际数据的地址，不能用key代替。
+	quicksort3(a, left, prev - 1);//继续处理左边的，这里是一个递归的过程
+	quicksort3(a, prev + 1, right);//继续处理右边的 ，这里是一个递归的过程
+}
+
 int main() {
 	//读入数据
 	//scanf("%d", &n);
@@ -39,7 +84,9 @@ int main() {
 	int i;
 	int arr[] = { 6, 1, 2, 7, 9, 3, 4, 5, 10, 8 };
 	int num = sizeof(arr) / sizeof(arr[0]);
-	quicksort(arr, 0, num-1); //快速排序调用
+	//quicksort(arr, 0, num-1); //快速排序调用（hoare法）
+	//quicksort2(arr, 0, num - 1);//快速排序调用（挖坑法）
+	quicksort3(arr, 0, num - 1);//快速排序调用（双指针法）
 	printf("快速排序后的结果为：");
 
 	for (i = 0; i < num; i++){
