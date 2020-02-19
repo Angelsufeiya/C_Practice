@@ -132,7 +132,7 @@ void SListReverse(SList * plist){
 	}
 	SListDestory(plist);
 	plist->_head = reve->_head;
-#else
+#elif 0
 	SListNode * tmp = plist->_head->_next; //记录next
 	SListNode * cur = plist->_head;
 	cur->_next = NULL; //断链，将头结点和他的next断开，有tmp记录，所以能找到
@@ -142,6 +142,18 @@ void SListReverse(SList * plist){
 		tmp = tmp->_next; //记录下次循环中tmp 的位置，因为tmp在这次循环中已经用完了，而且后面马上就要断链，所以必须在这里记录
 		plist->_head->_next = cur; //断链，与旧头形成新链
 		cur = plist->_head; //记录旧头的位置，方便下次循环成链
+	}
+#else
+	assert(plist->_head);
+
+	SListNode * tmp = plist->_head->_next;
+	SListNode * cur = plist->_head->_next;
+	plist->_head->_next = NULL; //没有此语句，链表打印将会陷入死循环
+	while (tmp){
+		tmp = tmp->_next;
+		cur->_next = plist->_head;
+		plist->_head = cur;
+		cur = tmp;
 	}
 #endif
 }
