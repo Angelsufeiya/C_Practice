@@ -191,3 +191,32 @@ int checkMoreThanHalf(int * arr){
 	}
 	return result;
 }
+
+int MAX_Arry(int* arr, int sz)
+{
+	int MAX = arr[0];
+	int sum = arr[0];
+	int i = 1;
+
+	//题目描述：数组里有正数也有负数（最少有两个数）
+	if (arr == NULL || sz <= 1)
+		return 0;
+	for (i = 1; i < sz; i++)
+	{
+		if (sum < 0)
+			sum = arr[i];
+		else
+		{
+			sum += arr[i];
+		}
+		if (sum > MAX)
+			MAX = sum;
+	}
+	return MAX; 
+}
+int main() {
+	int arr[] = { 1 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	printf("%d\n", MAX_Arry(arr, len));
+	return 0;
+}
