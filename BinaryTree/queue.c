@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
+//队列初始化
 void QueueInit(Queue* plist)
 {
 	assert(plist);
@@ -11,6 +12,7 @@ void QueueInit(Queue* plist)
 	plist->_rear = NULL;
 }
 
+//队列销毁
 void QueueDestory(Queue* plist)
 {
 	QueueNode * tmp;
@@ -22,6 +24,7 @@ void QueueDestory(Queue* plist)
 	}
 }
 
+//队列删除（头删）
 void QueuePop(Queue* plist)
 {
 	assert(plist);
@@ -35,6 +38,7 @@ void QueuePop(Queue* plist)
 	}
 }
 
+//队列插入（尾插）
 void QueuePush(Queue* plist, QuDataType x)
 {
 	QueueNode * cur = (QueueNode *)malloc(sizeof(QueueNode));
@@ -51,11 +55,13 @@ void QueuePush(Queue* plist, QuDataType x)
 	plist->_rear = cur;
 }
 
+//队列如果是空，返回1；非空，返回0。
 int QueueIsEmpty(Queue* plist)
 {
 	return plist->_head == NULL;
 }
 
+//返回队头
 QuDataType QueueTop(Queue* plist)
 {
 	if (QueueIsEmpty(plist))

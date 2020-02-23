@@ -1,4 +1,4 @@
-// 顺序表的动态存储
+// 顺序表的动态存储：用顺序表实现栈
 #ifndef _Stack_H_
 #define _Stack_H_
 

@@ -1,5 +1,6 @@
 #include "stack.h"
 
+//Õ»µÄ³õÊ¼»¯
 void StackInit(Stack* psl, size_t capicity)
 {
 	assert(psl);

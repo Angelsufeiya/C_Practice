@@ -87,16 +87,16 @@ void BinaryTreeDestory(BTNode* root){
 	}
 }
 
-//二叉树层序遍历（队列）
+//二叉树层序遍历（队列）:二叉树层层压栈，层层递归跳出（先入先出）
 void BinaryTreeLevelOrder(BTNode* root)
 {
 	Queue qu;
 	BTNode * cur;
 
 	QueueInit(&qu);
-
 	QueuePush(&qu, root);
 
+	//队列是空返回1；非空返回0
 	while (!QueueIsEmpty(&qu))
 	{
 		cur = QueueTop(&qu);
@@ -115,10 +115,10 @@ void BinaryTreeLevelOrder(BTNode* root)
 
 		QueuePop(&qu);
 	}
-
 	QueueDestory(&qu);
 }
 
+//非递归的前序遍历
 void BinaryTreePrevOrderNonR(BTNode* root)
 {
 	Stack st;
@@ -126,6 +126,7 @@ void BinaryTreePrevOrderNonR(BTNode* root)
 
 	StackInit(&st, 100);
 
+	//不能用栈是否为空进行判断（根节点的左边全部遍历结束，访问根节点的右孩子时，此时栈为空）
 	while (cur)
 	{
 		putchar(cur->data); //访问当前节点
@@ -148,7 +149,7 @@ void BinaryTreePrevOrderNonR(BTNode* root)
 	StackDestory(&st);
 }
 
-
+//非递归的中序遍历
 void BinaryTreeInOrderNonR(BTNode * root)
 {
 	BTNode * cur = root;
