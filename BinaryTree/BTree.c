@@ -6,30 +6,10 @@
 #include <stdlib.h>
 
 //返回根节点（二叉树的创建）
-BTNode *BinaryTreeCreate(BTDataType* src){
-	static int s_n = 0;
-
-	if (src[s_n] == '#'){
-		s_n++;
-		return NULL;
-	}
-
-	BTNode * cur = (BTNode *)malloc(sizeof(BTNode));
-	cur->data = src[s_n];
-	s_n++;
-
-	cur->lChild = BinaryTreeCreate(src);
-	cur->rChild = BinaryTreeCreate(src);
-
-	return cur;
-}
-
-//static int s_n;
+//BTNode *BinaryTreeCreate(BTDataType* src){
+//	static int s_n = 0;
 //
-//BTNode *BinaryTreeCreateExe(BTDataType * src)
-//{
-//	if (src[s_n] == '#')
-//	{
+//	if (src[s_n] == '#'){
 //		s_n++;
 //		return NULL;
 //	}
@@ -38,17 +18,37 @@ BTNode *BinaryTreeCreate(BTDataType* src){
 //	cur->data = src[s_n];
 //	s_n++;
 //
-//	cur->lChild = BinaryTreeCreateExe(src);
-//	cur->rChild = BinaryTreeCreateExe(src);
+//	cur->lChild = BinaryTreeCreate(src);
+//	cur->rChild = BinaryTreeCreate(src);
 //
 //	return cur;
 //}
-//
-//BTNode *BinaryTreeCreate(BTDataType * src)
-//{
-//	s_n = 0;
-//	return BinaryTreeCreateExe(src);
-//}
+
+static int s_n;
+
+BTNode *BinaryTreeCreateExe(BTDataType * src)
+{
+	if (src[s_n] == '#')
+	{
+		s_n++;
+		return NULL;
+	}
+
+	BTNode * cur = (BTNode *)malloc(sizeof(BTNode));
+	cur->data = src[s_n];
+	s_n++;
+
+	cur->lChild = BinaryTreeCreateExe(src);
+	cur->rChild = BinaryTreeCreateExe(src);
+
+	return cur;
+}
+
+BTNode *BinaryTreeCreate(BTDataType * src)
+{
+	s_n = 0;
+	return BinaryTreeCreateExe(src);
+}
 
 //前序遍历打印二叉树（具有后入先出的用递归，先入先出用循环）
 void BinaryTreePrevOrder(BTNode* root){
@@ -195,7 +195,7 @@ void BinaryTreePostOrderNonR(BTNode* root)
 		while (!StackIsEmpty(&st) && tag[st.size - 1])
 			//前面的条件只在最后一次循环跳出的时候生效
 			//后面的条件分两个情况：
-			//1、当cur的为空时，上面的for不进，此条件成立
+			//1、当cur为空时，上面的for不进，此条件成立
 			//2、当cur不为空，上面的for进，则此条件不成立
 			//如果检测到当前的LT被置位（也就是情况1），那么在打印完当前节点后，再去直接检查上一个节点（父节点）是不是也要被打印了（LT置位，证明这是它的右子树，它也要被打印了），所以要用while循环打印
 		{
@@ -214,7 +214,8 @@ void BinaryTreePostOrderNonR(BTNode* root)
 			//左子树访问完毕后，访问右子树
 		}
 	} while (!StackIsEmpty(&st));
-	//由于后序遍历中根节点是最后出栈的，所以在根节点出栈前，栈不可能为空，所以以栈是否为空来判定是否要跳出
+	//由于后序遍历中根节点是最后出栈的，所以在根节点出栈前，栈不可能为空
+	//所以以栈是否为空来判定是否要跳出
 
 	StackDestory(&st);
 }
@@ -226,7 +227,6 @@ int BinaryTreeComplete(BTNode* root)
 	int tag = 0;
 
 	QueueInit(&qu);
-
 	QueuePush(&qu, root);
 
 	while (!QueueIsEmpty(&qu))
@@ -235,11 +235,13 @@ int BinaryTreeComplete(BTNode* root)
 
 		putchar(cur->data);
 
+		//节点有右孩子，没左孩子 直接跳出（不是完全二叉树）
 		if (cur->rChild && !cur->lChild)
 		{
 			return 0;
 		}
 
+		//节点有左孩子没有孩子（tag == 1），但此层节点后节点还有孩子，则跳出
 		if (tag && (cur->rChild || cur->lChild))
 		{
 			return 0;

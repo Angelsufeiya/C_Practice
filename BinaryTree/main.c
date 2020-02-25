@@ -27,11 +27,11 @@ int main(){
 
 	BinaryTreeDestory(root);
 
-	//BTNode * root2 = BinaryTreeCreate("ABDH##I##EJ###CF##G##");
+	BTNode * root2 = BinaryTreeCreate("ABDH##I##EJ###CF##G##");
 
-	//printf("%d\n", BinaryTreeComplete(root2));
+	printf("%d\n", BinaryTreeComplete(root2));
 
-	//BinaryTreeDestory(root2);
+	BinaryTreeDestory(root2);
 
 	return 0;
 }
